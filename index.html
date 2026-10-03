@@ -87,7 +87,7 @@
             border-left: 4px solid var(--accent-gold);
             border-radius: 10px;
             padding: 1.8rem;
-            margin-bottom: 2.5rem;
+            margin-bottom: 1.5rem;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
@@ -101,6 +101,29 @@
         .intro p {
             font-size: 1.15rem;
             margin-bottom: 0;
+        }
+
+        .info-box {
+            background-color: rgba(255, 183, 3, 0.05);
+            border: 1px dashed var(--accent-gold);
+            border-radius: 10px;
+            padding: 1.2rem 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .info-box h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--accent-gold);
+            margin: 0 0 0.5rem 0;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .info-box p {
+            margin: 0;
+            font-size: 1.05rem;
+            color: #e2e8f0;
         }
 
         .section-title {
@@ -190,7 +213,6 @@
 
     <header>
         <div class="logo-container">
-            <!-- Zorg dat de foto 'Arend.jpg' geüpload is in je GitHub repository -->
             <img src="Arend.jpg" alt="Condor Games Logo" class="avatar">
         </div>
         <h1>Condor Games</h1>
@@ -202,6 +224,12 @@
             <h2>Welcome to Condor Games</h2>
             <p>Hi, I am <strong>Condor</strong>! Welcome to my homebrew hub. Here you can find original, homemade games and software developed specifically for the <strong>Philips CD-i</strong> console. All games are completely free to download for retro gaming enthusiasts!</p>
         </section>
+
+        <!-- Nieuw informatieblok voor het branden van CDs -->
+        <div class="info-box">
+            <h3>Testing & Burning Instructions</h3>
+            <p>All games have been burned to CD and tested in actual CD-i players. Extract the ZIP or RAR file and burn the .cue and .bin files using your favorite burning software.</p>
+        </div>
 
         <section>
             <h2 class="section-title">CD-I Homebrew Games</h2>
