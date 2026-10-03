@@ -147,12 +147,13 @@
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 1.8rem;
+            padding: 1.5rem;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             transition: all 0.3s ease;
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            overflow: hidden;
         }
 
         .game-card:hover {
@@ -164,15 +165,26 @@
         .game-card h3 {
             font-family: 'Orbitron', sans-serif;
             margin-top: 0;
+            margin-bottom: 0.8rem;
             color: #ffffff;
             font-size: 1.5rem;
             letter-spacing: 0.5px;
+        }
+
+        .game-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 1rem;
         }
 
         .game-card p {
             font-size: 1.05rem;
             color: #a0aec0;
             flex-grow: 1;
+            margin-bottom: 1rem;
         }
 
         .btn-download {
@@ -186,7 +198,6 @@
             font-size: 0.95rem;
             font-weight: 700;
             text-align: center;
-            margin-top: 1.2rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: all 0.2s ease;
@@ -225,25 +236,31 @@
             <p>Hi, I am <strong>Condor</strong>! Welcome to my homebrew hub. Here you can find original, homemade games and software developed specifically for the <strong>Philips CD-i</strong> console. All games are completely free to download for retro gaming enthusiasts!</p>
         </section>
 
-        <!-- Nieuw informatieblok voor het branden van CDs -->
         <div class="info-box">
             <h3>Testing & Burning Instructions</h3>
-            <p>All games have been burned to CD and tested in actual CD-i players. 
-             Extract the ZIP or RAR file and burn the .cue and .bin files using your favorite burning software.</p>
+            <p>All games have been burned to CD and tested in actual CD-i players. Extract the ZIP or RAR file and burn the .cue and .bin files using your favorite burning software.</p>
         </div>
 
         <section>
-            <h2 class="section-title">CD-I Homebrew Games</h2>
+            <h2 class="section-title">CD-i Games</h2>
             <div class="game-grid">
                 
                 <!-- Game 1 -->
                 <article class="game-card">
                     <div>
-                        <h3>Mijn Eerste CD-i Game</h3>
-                        <p>Beschrijf hier je game. Vertel bijvoorbeeld over de gameplay, het verhaal en hoe spelers het bestand op hun Philips CD-i speler of emulator kunnen afspelen.</p>
+                        <!-- VUL HIER DE NAAM VAN JE GAME IN -->
+                        <h3>Naam van jouw CD-i Game</h3>
+                        
+                        <!-- SCREENSHOT VAN JE GAME -->
+                        <!-- Upload je foto naar GitHub en zet de juiste bestandsnaam bij src="..." -->
+                        <img src="game-screenshot.jpg" alt="CD-i Game Screenshot" class="game-img">
+                        
+                        <!-- VUL HIER JE SPELBESCHRIJVING / TEKST IN -->
+                        <p>Zet hier je eigen tekst neer over de game! Vertel bijvoorbeeld waar het spel over gaat, de besturing, of unieke functies van jouw CD-i game.</p>
                     </div>
-                    <!-- Vervang 'mijn-game.zip' door de exacte naam van je geüploade game-bestand -->
-                    <a href="mijn-game.zip" class="btn-download" download>Download Game (ZIP)</a>
+                    
+                    <!-- VERVANG 'jouw-game.zip' DOOR DE JUISTE BESTANDSNAAM VAN JE GAME -->
+                    <a href="jouw-game.zip" class="btn-download" download>Download Game (ZIP)</a>
                 </article>
 
             </div>
