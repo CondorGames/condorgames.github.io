@@ -1,58 +1,164 @@
-<h1>CONDOR GAMES</h1>
- 
-<p>Free Philips CD-I Homebrew Games</p>
- 
-<p>Download gratis CD-I games, demo's en tools.</p>
- 
-<h2>⭐ FEATURED GAME ⭐</h2>
- 
-<h2>FLY CD-I</h2>
- 
-<p>
-Pilot your ship through dangerous sectors of space,
-destroy enemy fleets and survive intense battles in this
-new Philips CD-I Shoot'em Up from Condor Games.
-</p>
- 
-<p><b>DOWNLOAD COMING SOON</b></p>
- 
-<hr>
- 
-<h2>AVAILABLE GAMES</h2>
- 
-<h3>FLY CD-I</h3>
-<p>Shoot'em Up</p>
- 
-<h3>THE FRANTIC MAN</h3>
-<p>Shoot'em Up</p>
- 
-<hr>
- 
-<h2>COMING SOON</h2>
- 
-<h3>CARNIVAL CD-I</h3>
- 
-<p>
-A new Philips CD-I project currently under development
-by Condor Games.
-</p>
- 
-<hr>
- 
-<h2>ABOUT CONDOR GAMES</h2>
- 
-<p>
-Condor Games develops free Homebrew games for the
-Philips CD-I platform.
-</p>
- 
-<p>
-All games on this website are provided free of charge.
-</p>
- 
-<hr>
- 
-<p>
-CD-I Homebrew Games | Philips CD-I Games |
-CD-I Downloads | Condor Games
-</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Condor Games | CD-i Homebrew Games & Downloads</title>
+    <meta name="description" content="Welcome to Condor Games by Condor. Download free homemade Philips CD-i Homebrew games, homebrew software, and retro CD-i projects.">
+    <meta name="keywords" content="CD-I HomeBrew Games, CD-i homebrew, Philips CD-i, Condor Games, CD-i games download, homebrew retro games">
+    <meta name="author" content="Condor">
+    
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --border-color: #30363d;
+            --text-color: #c9d1d9;
+            --accent-color: #58a6ff;
+            --accent-hover: #1f6feb;
+            --gold-color: #f1e05a;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            color: #ffffff;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            margin-top: 0.5rem;
+            font-size: 1.1rem;
+            color: #8b949e;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .intro {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .game-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .game-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-color);
+        }
+
+        .game-card h3 {
+            margin-top: 0;
+            color: #ffffff;
+            font-size: 1.4rem;
+        }
+
+        .game-card p {
+            font-size: 0.95rem;
+            color: #8b949e;
+            flex-grow: 1;
+        }
+
+        .btn-download {
+            display: inline-block;
+            background-color: var(--accent-hover);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 0.75rem 1.25rem;
+            border-radius: 6px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 1rem;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-download:hover {
+            background-color: var(--accent-color);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            color: #8b949e;
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Condor Games</h1>
+        <p>Home of Custom Philips CD-i Homebrew Games & Projects</p>
+    </header>
+
+    <div class="container">
+        <section class="intro">
+            <h2>Welcome to Condor Games</h2>
+            <p>Hi, I am <strong>Condor</strong>! Welcome to my official homebrew repository. Here you can find original, homemade games and projects developed specifically for the <strong>Philips CD-i</strong> platform. All downloads are 100% free for retro gaming enthusiasts!</p>
+        </section>
+
+        <section>
+            <h2>CD-I Homebrew Games List</h2>
+            <div class="game-grid">
+                
+                <!-- Game 1 -->
+                <article class="game-card">
+                    <div>
+                        <h3>Mijn Eerste CD-i Game</h3>
+                        <p>Beschrijving van je game. Vertel hier kort waar het spel over gaat, hoe het werkt op een echte Philips CD-i speler of emulator (zoals SameCDi / MAME).</p>
+                    </div>
+                    <!-- Vervang 'mijn-game.zip' door de exacte naam van je geüploade bestand -->
+                    <a href="mijn-game.zip" class="btn-download" download>Download Game (ZIP / ISO)</a>
+                </article>
+
+                <!-- Je kunt hier later meer games toevoegen door dit blok te kopiëren -->
+
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Condor Games | Created for Philips CD-i Retro Enthusiasts</p>
+    </footer>
+
+</body>
+</html>
