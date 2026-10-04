@@ -170,7 +170,6 @@
             font-size: 1.4rem;
         }
 
-        /* Afbeelding 2x zo groot gemaakte weergave (360px max width) */
         .game-img {
             width: 100%;
             max-width: 360px;
@@ -245,48 +244,58 @@
 
         <section>
             <h2 class="section-title">CD-i Games</h2>
+            
             <div class="game-grid">
                 
-                <!-- Game 1 -->
+                <!-- Game 1: FLY CD-i -->
                 <article class="game-card">
                     <div>
                         <h3>FLY CD-i</h3>
-                        
                         <img src="FLY.png" alt="FLY CD-i Screenshot" class="game-img">
-                        
                         <p>FLY CD-i is a unique arcade experience inspired by the remarkable 1982 classic River Raid. This CD-i version features three distinct themes, each lasting approximately five minutes. A slice of video game history from the CD-i era short, simple, and capturing the true spirit of classic arcade cabinets.</p>
                     </div>
                     
-                    <!-- Download knop + Teller -->
                     <div style="text-align: center; margin-top: 1.5rem;">
                         <a href="FLY%20CD-I%20Image.rar" class="btn-download" download>Download Game (RAR)</a>
                         <p style="font-size: 0.85rem; color: #aaaaaa; margin-top: 0.6rem;">
                             📥 Aantal downloads: <strong id="download-count" style="color: #ffb703;">Laden...</strong>
                         </p>
                     </div>
+                </article>
 
-                    <!-- Reacties via Giscus -->
-                    <div style="margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
-                        <h4 style="margin-bottom: 1rem; color: #ffffff; font-family: 'Orbitron', sans-serif;">Reacties</h4>
-                        
-                        <script src="https://giscus.app/client.js"
-                                data-repo="CondorGames/condorgames.github.io"
-                                data-repo-id="R_kgDOU59Ifw"
-                                data-category="General"
-                                data-category-id="DIC_kwDOU59If84DHAu5"
-                                data-mapping="pathname"
-                                data-strict="0"
-                                data-reactions-enabled="1"
-                                data-emit-metadata="0"
-                                data-input-position="top"
-                                data-theme="dark"
-                                data-lang="nl"
-                                crossorigin="anonymous"
-                                async>
-                        </script>
+                <!-- Game 2: Tweede Game -->
+                <article class="game-card">
+                    <div>
+                        <h3>TITEL VAN JE GAME 2</h3>
+                        <img src="afbeelding2.png" alt="Game Screenshot" class="game-img">
+                        <p>Hier schrijf je een korte beschrijving van je tweede game, hoe het speelt en wat de kenmerken zijn.</p>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 1.5rem;">
+                        <a href="gamebestand2.rar" class="btn-download" download>Download Game (RAR)</a>
                     </div>
                 </article>
 
+            </div>
+
+            <!-- Reacties via Giscus onder het raster -->
+            <div style="margin-top: 3rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem;">
+                <h3 style="margin-bottom: 1rem; color: #ffffff; font-family: 'Orbitron', sans-serif;">Reacties</h3>
+                <script src="https://giscus.app/client.js"
+                        data-repo="CondorGames/condorgames.github.io"
+                        data-repo-id="R_kgDOU59Ifw"
+                        data-category="General"
+                        data-category-id="DIC_kwDOU59If84DHAu5"
+                        data-mapping="pathname"
+                        data-strict="0"
+                        data-reactions-enabled="1"
+                        data-emit-metadata="0"
+                        data-input-position="top"
+                        data-theme="dark"
+                        data-lang="nl"
+                        crossorigin="anonymous"
+                        async>
+                </script>
             </div>
         </section>
     </div>
