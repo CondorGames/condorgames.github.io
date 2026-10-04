@@ -264,7 +264,7 @@
                     <div class="card-action">
                         <a href="FLY%20CD-I%20Image.rar" class="btn-download" download>Download Game (RAR)</a>
                         <p style="font-size: 0.85rem; color: #aaaaaa; margin-top: 0.6rem;">
-                            📥 Aantal downloads: <strong id="download-count" style="color: #ffb703;">Laden...</strong>
+                            📥 Aantal downloads: <strong class="download-counter" data-asset="FLY CD-I Image.rar" style="color: #ffb703;">Laden...</strong>
                         </p>
                     </div>
                 </article>
@@ -279,6 +279,9 @@
                     
                     <div class="card-action">
                         <a href="The%20Frantic%20Man%20CD-I%20Image.rar" class="btn-download" download>Download Game (RAR)</a>
+                        <p style="font-size: 0.85rem; color: #aaaaaa; margin-top: 0.6rem;">
+                            📥 Aantal downloads: <strong class="download-counter" data-asset="The Frantic Man CD-I Image.rar" style="color: #ffb703;">Laden...</strong>
+                        </p>
                     </div>
                 </article>
 
@@ -310,25 +313,34 @@
         <p>&copy; Condor Games - Philips CD-i Homebrew & Retro Development</p>
     </footer>
 
-    <!-- Script voor het ophalen van de live download teller -->
+    <!-- Script voor het ophalen van live download aantallen per game -->
     <script>
         fetch('https://api.github.com/repos/CondorGames/condorgames.github.io/releases')
             .then(res => res.json())
             .then(releases => {
-                let total = 0;
+                const downloadCounts = {};
                 if (Array.isArray(releases)) {
                     releases.forEach(release => {
                         if (release.assets) {
                             release.assets.forEach(asset => {
-                                total += asset.download_count;
+                                downloadCounts[asset.name.toLowerCase()] = asset.download_count;
                             });
                         }
                     });
                 }
-                document.getElementById('download-count').innerText = total;
+                document.querySelectorAll('.download-counter').forEach(el => {
+                    const assetName = el.getAttribute('data-asset');
+                    if (assetName && downloadCounts[assetName.toLowerCase()] !== undefined) {
+                        el.innerText = downloadCounts[assetName.toLowerCase()];
+                    } else {
+                        el.innerText = '0';
+                    }
+                });
             })
             .catch(() => {
-                document.getElementById('download-count').innerText = '0';
+                document.querySelectorAll('.download-counter').forEach(el => {
+                    el.innerText = '0';
+                });
             });
     </script>
 
