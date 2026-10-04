@@ -262,9 +262,9 @@
                     </div>
                     
                     <div class="card-action">
-                        <a href="https://github.com/CondorGames/condorgames.github.io/releases/download/v1.0/FLY.CD-I.Image.rar" class="btn-download" download>Download Game (RAR)</a>
+                        <a href="https://github.com/CondorGames/condorgames.github.io/releases/download/v1.0.0/FLY.CD-I.Image.rar" class="btn-download" download>Download Game (RAR)</a>
                         <p style="font-size: 0.85rem; color: #aaaaaa; margin-top: 0.6rem;">
-                            📥 Aantal downloads: <strong class="download-counter" data-asset="FLY CD-I Image.rar" style="color: #ffb703;">Laden...</strong>
+                            📥 Aantal downloads: <strong class="download-counter" data-asset="FLY.CD-I.Image.rar" style="color: #ffb703;">Laden...</strong>
                         </p>
                     </div>
                 </article>
@@ -278,7 +278,7 @@
                     </div>
                     
                     <div class="card-action">
-                        <a href="https://github.com/CondorGames/condorgames.github.io/releases/download/v1.0/The.Frantic.Man.CD-I.Image.rar" class="btn-download" download>Download Game (RAR)</a>
+                        <a href="https://github.com/CondorGames/condorgames.github.io/releases/download/v1.0.0/The.Frantic.Man.CD-I.Image.rar" class="btn-download" download>Download Game (RAR)</a>
                         <p style="font-size: 0.85rem; color: #aaaaaa; margin-top: 0.6rem;">
                             📥 Aantal downloads: <strong class="download-counter" data-asset="The Frantic Man CD-I Image.rar" style="color: #ffb703;">Laden...</strong>
                         </p>
@@ -323,11 +323,7 @@
                     releases.forEach(release => {
                         if (release.assets) {
                             release.assets.forEach(asset => {
-                                // Sla het aantal downloads op per bestandsnaam (zonder hoofdlettergevoeligheid)
                                 downloadCounts[asset.name.toLowerCase()] = asset.download_count;
-                                // Haal eventueel punten weg voor extra flexibele koppeling
-                                const cleanName = asset.name.replace(/\./g, ' ').toLowerCase();
-                                downloadCounts[cleanName] = asset.download_count;
                             });
                         }
                     });
