@@ -163,12 +163,14 @@
         }
 
         .game-card h3 {
-            font-family: 'Orbitron', sans-serif;
-            margin-top: 0;
-            margin-bottom: 0.8rem;
-            color: #ffffff;
-            font-size: 1.5rem;
-            letter-spacing: 0.5px;
+            .game-img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 1rem;
         }
 
         .game-img {
@@ -252,7 +254,7 @@
                         <h3>FLY CD-I</h3>
                         
                         <!-- 2. Hier staat de naam van de screenshot die je al hebt geüpload! -->
-                        <img src="Schermafbeelding 2026-10-03 155005.png" alt="CD-i Game Screenshot" class="game-img">
+                        <img src="FLY.PNG" alt="CD-i Game Screenshot" class="game-img">
                         
                         <!-- 3. Vul hier je eigen tekst in -->
                         <p>FLY CD-i is a unique arcade experience inspired by the remarkable 1982 classic River Raid.
