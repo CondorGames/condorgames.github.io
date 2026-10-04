@@ -323,15 +323,27 @@
                     releases.forEach(release => {
                         if (release.assets) {
                             release.assets.forEach(asset => {
-                                downloadCounts[asset.name.toLowerCase()] = asset.download_count;
+                                // Sla op in kleine letters, en vervang ook spaties/punten voor maximale flexibiliteit
+                                const nameOriginal = asset.name.toLowerCase();
+                                const nameClean = nameOriginal.replace(/[\s\._-]+/g, '');
+                                downloadCounts[nameOriginal] = asset.download_count;
+                                downloadCounts[nameClean] = asset.download_count;
                             });
                         }
                     });
                 }
                 document.querySelectorAll('.download-counter').forEach(el => {
                     const assetName = el.getAttribute('data-asset');
-                    if (assetName && downloadCounts[assetName.toLowerCase()] !== undefined) {
-                        el.innerText = downloadCounts[assetName.toLowerCase()];
+                    if (assetName) {
+                        const targetOriginal = assetName.toLowerCase();
+                        const targetClean = targetOriginal.replace(/[\s\._-]+/g, '');
+                        if (downloadCounts[targetOriginal] !== undefined) {
+                            el.innerText = downloadCounts[targetOriginal];
+                        } else if (downloadCounts[targetClean] !== undefined) {
+                            el.innerText = downloadCounts[targetClean];
+                        } else {
+                            el.innerText = '0';
+                        }
                     } else {
                         el.innerText = '0';
                     }
