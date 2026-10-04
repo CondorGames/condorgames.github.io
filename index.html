@@ -194,6 +194,30 @@
             display: block;
         }
 
+        /* Prachtige zilverkleurige grote titel box zonder foto */
+        .coming-soon-title-box {
+            background: linear-gradient(135deg, #1a1b24 0%, #0d0e14 100%);
+            border: 2px solid #a0a8c0;
+            border-radius: 10px;
+            padding: 2.2rem 1rem;
+            text-align: center;
+            margin: 0 auto 1.5rem auto;
+            box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.05), 0 5px 15px rgba(0,0,0,0.4);
+        }
+
+        .silver-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.1rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 0;
+            background: linear-gradient(180deg, #ffffff 0%, #cfd5e6 50%, #8a94b2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 3px 10px rgba(255, 255, 255, 0.15);
+        }
+
         .game-card p {
             font-size: 1.05rem;
             color: #a0aec0;
@@ -321,12 +345,14 @@
                 <article class="game-card coming-soon">
                     <div>
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-                            <h3 style="margin: 0;">Carnival CD-I</h3>
+                            <h3 style="margin: 0; color: #c77dff;">New Project</h3>
                             <span style="background-color: #7b2cbf; color: #e0aaff; font-family: 'Orbitron', sans-serif; font-size: 0.75rem; padding: 0.25rem 0.6rem; border-radius: 20px; border: 1px solid #c77dff; text-transform: uppercase; letter-spacing: 1px;">Coming Soon</span>
                         </div>
                         
-                        <!-- Vervang 'carnival.png' tzt. door je eigen screenshot als je die hebt -->
-                        <img src="FLY.png" alt="Carnival CD-I Teaser" class="game-img" style="opacity: 0.7; filter: hue-rotate(90deg);">
+                        <!-- Zilverkleurige titelkader in plaats van een foto -->
+                        <div class="coming-soon-title-box">
+                            <h4 class="silver-title">CARNIVAL CD-I</h4>
+                        </div>
                         
                         <p>Get ready for an exciting new homebrew experience! <strong>Carnival CD-I</strong> brings classic fairground vibes and retro arcade action straight to your Philips CD-i console. Development is underway, and download files will be available soon!</p>
                     </div>
