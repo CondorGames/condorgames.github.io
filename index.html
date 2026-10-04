@@ -163,30 +163,27 @@
         }
 
         .game-card h3 {
-            .game-img {
+            font-family: 'Orbitron', sans-serif;
+            color: #ffffff;
+            margin-top: 0;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .game-img {
             width: 100%;
-            height: auto;
+            max-width: 180px;
             aspect-ratio: 16 / 9;
             object-fit: cover;
             border-radius: 8px;
             border: 1px solid var(--border-color);
-            margin-bottom: 1rem;
-        }
-          .game-img {
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 1rem;
+            margin: 0 auto 1rem auto;
             display: block;
-        }
-    
         }
 
         .game-card p {
             font-size: 1.05rem;
             color: #a0aec0;
-            flex-grow: 1;
             margin-bottom: 1rem;
         }
 
@@ -220,6 +217,7 @@
             font-size: 0.95rem;
             border-top: 1px solid var(--border-color);
             background-color: rgba(0,0,0,0.3);
+            margin-top: 3rem;
         }
     </style>
 </head>
@@ -250,15 +248,73 @@
                 
                 <!-- Game 1 -->
                 <article class="game-card">
-    <div>
-        <h3>FLY CD-i</h3>
-        
-        <img src="FLY.png" alt="CD-i Game Screenshot" class="game-img">
-        
-        <p>FLY CD-i is a unique arcade experience inspired by the remarkable 1982 classic River Raid. This CD-i version features three distinct themes, each lasting approximately five minutes. A slice of video game history from the CD-i era short, simple, and capturing the true spirit of classic arcade cabinets.</p>
+                    <div>
+                        <h3>FLY CD-i</h3>
+                        
+                        <img src="FLY.png" alt="FLY CD-i Screenshot" class="game-img">
+                        
+                        <p>FLY CD-i is a unique arcade experience inspired by the remarkable 1982 classic River Raid. This CD-i version features three distinct themes, each lasting approximately five minutes. A slice of video game history from the CD-i era short, simple, and capturing the true spirit of classic arcade cabinets.</p>
+                    </div>
+                    
+                    <!-- Download knop + Teller -->
+                    <div style="text-align: center; margin-top: 1.5rem;">
+                        <a href="FLY%20CD-I%20Image.rar" class="btn-download" download>Download Game (RAR)</a>
+                        <p style="font-size: 0.85rem; color: #aaaaaa; margin-top: 0.6rem;">
+                            📥 Aantal downloads: <strong id="download-count" style="color: #ffb703;">Laden...</strong>
+                        </p>
+                    </div>
+
+                    <!-- Reacties via Giscus -->
+                    <div style="margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
+                        <h4 style="margin-bottom: 1rem; color: #ffffff; font-family: 'Orbitron', sans-serif;">Reacties</h4>
+                        
+                        <script src="https://giscus.app/client.js"
+                                data-repo="CondorGames/condorgames.github.io"
+                                data-repo-id="VUL_HIER_JE_REPO_ID_IN"
+                                data-category="General"
+                                data-category-id="VUL_HIER_JE_CATEGORY_ID_IN"
+                                data-mapping="title"
+                                data-strict="0"
+                                data-reactions-enabled="1"
+                                data-emit-metadata="0"
+                                data-input-position="top"
+                                data-theme="dark"
+                                data-lang="nl"
+                                crossorigin="anonymous"
+                                async>
+                        </script>
+                    </div>
+                </article>
+
+            </div>
+        </section>
     </div>
-    
-    <a href="FLY%20CD-I%20Image.rar" class="btn-download" download>Download Game (RAR)</a>
-</article>
- 
-            
+
+    <footer>
+        <p>&copy; Condor Games - Philips CD-i Homebrew & Retro Development</p>
+    </footer>
+
+    <!-- Script voor het ophalen van de live download teller -->
+    <script>
+        fetch('https://api.github.com/repos/CondorGames/condorgames.github.io/releases')
+            .then(res => res.json())
+            .then(releases => {
+                let total = 0;
+                if (Array.isArray(releases)) {
+                    releases.forEach(release => {
+                        if (release.assets) {
+                            release.assets.forEach(asset => {
+                                total += asset.download_count;
+                            });
+                        }
+                    });
+                }
+                document.getElementById('download-count').innerText = total;
+            })
+            .catch(() => {
+                document.getElementById('download-count').innerText = '0';
+            });
+    </script>
+
+</body>
+</html>
