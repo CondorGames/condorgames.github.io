@@ -23,6 +23,8 @@
             --accent-glow: rgba(255, 183, 3, 0.3);
             --btn-bg: #d48806;
             --btn-hover: #ffb703;
+            --coming-soon-color: #9d4edd;
+            --coming-soon-glow: rgba(157, 78, 221, 0.4);
         }
 
         body {
@@ -162,6 +164,17 @@
             box-shadow: 0 8px 25px var(--accent-glow);
         }
 
+        /* Special Coming Soon kaart stijl */
+        .game-card.coming-soon {
+            border-color: var(--coming-soon-color);
+            background: linear-gradient(145deg, #12151e 0%, #191225 100%);
+        }
+
+        .game-card.coming-soon:hover {
+            border-color: #c77dff;
+            box-shadow: 0 8px 25px var(--coming-soon-glow);
+        }
+
         .game-card h3 {
             font-family: 'Orbitron', sans-serif;
             color: #ffffff;
@@ -208,6 +221,25 @@
             background: linear-gradient(135deg, var(--btn-hover), var(--btn-bg));
             color: #000000;
             box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        /* Coming soon badge knop stijl */
+        .btn-coming-soon {
+            display: inline-block;
+            background: linear-gradient(135deg, #7b2cbf, #5a189a);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 0.85rem 1.4rem;
+            border-radius: 8px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+            cursor: default;
+            border: 1px solid #c77dff;
         }
 
         .card-action {
@@ -285,6 +317,28 @@
                     </div>
                 </article>
 
+                <!-- Game 3: Coming Soon - Carnival CD-I -->
+                <article class="game-card coming-soon">
+                    <div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                            <h3 style="margin: 0;">Carnival CD-I</h3>
+                            <span style="background-color: #7b2cbf; color: #e0aaff; font-family: 'Orbitron', sans-serif; font-size: 0.75rem; padding: 0.25rem 0.6rem; border-radius: 20px; border: 1px solid #c77dff; text-transform: uppercase; letter-spacing: 1px;">Coming Soon</span>
+                        </div>
+                        
+                        <!-- Vervang 'carnival.png' tzt. door je eigen screenshot als je die hebt -->
+                        <img src="FLY.png" alt="Carnival CD-I Teaser" class="game-img" style="opacity: 0.7; filter: hue-rotate(90deg);">
+                        
+                        <p>Get ready for an exciting new homebrew experience! <strong>Carnival CD-I</strong> brings classic fairground vibes and retro arcade action straight to your Philips CD-i console. Development is underway, and download files will be available soon!</p>
+                    </div>
+                    
+                    <div class="card-action">
+                        <div class="btn-coming-soon">In Development</div>
+                        <p style="font-size: 0.85rem; color: #c77dff; margin-top: 0.6rem;">
+                            🎪 Release verwacht binnenkort!
+                        </p>
+                    </div>
+                </article>
+
             </div>
 
             <!-- Reacties via Giscus onder het raster -->
@@ -323,7 +377,6 @@
                     releases.forEach(release => {
                         if (release.assets) {
                             release.assets.forEach(asset => {
-                                // Sla op in kleine letters, en vervang ook spaties/punten voor maximale flexibiliteit
                                 const nameOriginal = asset.name.toLowerCase();
                                 const nameClean = nameOriginal.replace(/[\s\._-]+/g, '');
                                 downloadCounts[nameOriginal] = asset.download_count;
