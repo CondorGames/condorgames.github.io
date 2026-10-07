@@ -318,7 +318,7 @@
                     </div>
                     
                     <div class="card-action">
-                        <a href="https://github.com/CondorGames/condorgames.github.io/releases/download/v1.0.0/FLY.CD-I.Image.rar" class="btn-download" download>Download Game (RAR)</a>
+                        <a href="FLY.CD-I.rar" class="btn-download" data-asset="FLY.CD-I.Image.rar" download>Download Game (RAR)</a>
                         <p style="font-size: 0.85rem; color: #aaaaaa; margin-top: 0.6rem;">
                             📥 Aantal downloads: <strong class="download-counter" data-asset="FLY.CD-I.Image.rar" style="color: #ffb703;">Laden...</strong>
                         </p>
@@ -334,7 +334,7 @@
                     </div>
                     
                     <div class="card-action">
-                        <a href="https://github.com/CondorGames/condorgames.github.io/releases/download/v1.0.1/The.Frantic.Man.CD-I.Image.rar" class="btn-download" download>Download Game (RAR)</a>
+                        <a href="The.Frantic.Man.rar" class="btn-download" data-asset="The.Frantic.Man.CD-I.Image.rar" download>Download Game (RAR)</a>
                         <p style="font-size: 0.85rem; color: #aaaaaa; margin-top: 0.6rem;">
                             📥 Aantal downloads: <strong class="download-counter" data-asset="The.Frantic.Man.CD-I.Image.rar" style="color: #ffb703;">Laden...</strong>
                         </p>
@@ -350,7 +350,7 @@
                     </div>
 
                     <div class="card-action">
-                        <a href="https://github.com/CondorGames/condorgames.github.io/releases/download/v1.0.2/Carnival.CD-I.rar" class="btn-download" download>Download Game (RAR)</a>
+                        <a href="Carnival.CD-I.rar" class="btn-download" data-asset="Carnival.CD-I.rar" download>Download Game (RAR)</a>
                         <p style="font-size:0.85rem; color:#aaaaaa; margin-top:0.6rem;">
                             📥 Aantal downloads: <strong class="download-counter" data-asset="Carnival.CD-I.rar" style="color:#ffb703;">Laden...</strong>
                         </p>
@@ -366,7 +366,7 @@
                     </div>
 
                     <div class="card-action">
-                        <a href="https://github.com/CondorGames/condorgames.github.io/releases/download/v1.0.3/Circus.CD-I.rar" class="btn-download" download>Download Game (RAR)</a>
+                        <a href="Circus.CD-I.rar" class="btn-download" data-asset="Circus.CD-I.rar" download>Download Game (RAR)</a>
                         <p style="font-size:0.85rem; color:#aaaaaa; margin-top:0.6rem;">
                             📥 Aantal downloads: <strong class="download-counter" data-asset="Circus.CD-I.rar" style="color:#ffb703;">Laden...</strong>
                         </p>
@@ -424,33 +424,55 @@
         <p>&copy; Condor Games - Philips CD-i Homebrew & Retro Development</p>
     </footer>
 
-    <!-- Script voor downloadtellers -->
+    <!-- Geautomatiseerd script voor dynamische downloadlinks & tellers -->
     <script>
         fetch('https://api.github.com/repos/CondorGames/condorgames.github.io/releases')
             .then(res => res.json())
             .then(releases => {
-                const downloadCounts = {};
+                const assetData = {};
+
                 if (Array.isArray(releases)) {
                     releases.forEach(release => {
                         if (release.assets) {
                             release.assets.forEach(asset => {
                                 const nameOriginal = asset.name.toLowerCase();
                                 const nameClean = nameOriginal.replace(/[\s\._-]+/g, '');
-                                downloadCounts[nameOriginal] = asset.download_count;
-                                downloadCounts[nameClean] = asset.download_count;
+                                
+                                const info = {
+                                    count: asset.download_count,
+                                    url: asset.browser_download_url
+                                };
+
+                                assetData[nameOriginal] = info;
+                                assetData[nameClean] = info;
                             });
                         }
                     });
                 }
+
+                // Update de downloadknoppen en tellers automatisch
+                document.querySelectorAll('.btn-download').forEach(btn => {
+                    const target = btn.getAttribute('data-asset');
+                    if (target) {
+                        const targetOrig = target.toLowerCase();
+                        const targetClean = targetOrig.replace(/[\s\._-]+/g, '');
+                        const found = assetData[targetOrig] || assetData[targetClean];
+                        
+                        if (found) {
+                            btn.setAttribute('href', found.url);
+                        }
+                    }
+                });
+
                 document.querySelectorAll('.download-counter').forEach(el => {
-                    const assetName = el.getAttribute('data-asset');
-                    if (assetName) {
-                        const targetOriginal = assetName.toLowerCase();
-                        const targetClean = targetOriginal.replace(/[\s\._-]+/g, '');
-                        if (downloadCounts[targetOriginal] !== undefined) {
-                            el.innerText = downloadCounts[targetOriginal];
-                        } else if (downloadCounts[targetClean] !== undefined) {
-                            el.innerText = downloadCounts[targetClean];
+                    const target = el.getAttribute('data-asset');
+                    if (target) {
+                        const targetOrig = target.toLowerCase();
+                        const targetClean = targetOrig.replace(/[\s\._-]+/g, '');
+                        const found = assetData[targetOrig] || assetData[targetClean];
+                        
+                        if (found) {
+                            el.innerText = found.count;
                         } else {
                             el.innerText = '0';
                         }
