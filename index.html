@@ -26,8 +26,6 @@
             --accent-glow: rgba(255, 183, 3, 0.3);
             --btn-bg: #d48806;
             --btn-hover: #ffb703;
-            --coming-soon-color: #9d4edd;
-            --coming-soon-glow: rgba(157, 78, 221, 0.4);
             --update-badge-bg: rgba(255, 183, 3, 0.15);
             --update-badge-border: #ffb703;
         }
@@ -169,16 +167,6 @@
             box-shadow: 0 8px 25px var(--accent-glow);
         }
 
-        .game-card.coming-soon {
-            border-color: var(--coming-soon-color);
-            background: linear-gradient(145deg, #12151e 0%, #191225 100%);
-        }
-
-        .game-card.coming-soon:hover {
-            border-color: #c77dff;
-            box-shadow: 0 8px 25px var(--coming-soon-glow);
-        }
-
         .game-card h3 {
             font-family: 'Orbitron', sans-serif;
             color: #ffffff;
@@ -198,7 +186,6 @@
             display: block;
         }
 
-        /* Stijl voor de update ballonnetjes / notificaties */
         .update-badge {
             background: var(--update-badge-bg);
             border: 1px solid var(--update-badge-border);
@@ -212,29 +199,6 @@
             gap: 0.5rem;
             font-weight: 600;
             box-shadow: 0 2px 8px rgba(255, 183, 3, 0.1);
-        }
-
-        .coming-soon-title-box {
-            background: linear-gradient(135deg, #1a1b24 0%, #0d0e14 100%);
-            border: 2px solid #a0a8c0;
-            border-radius: 10px;
-            padding: 2.2rem 1rem;
-            text-align: center;
-            margin: 0 auto 1.5rem auto;
-            box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.05), 0 5px 15px rgba(0,0,0,0.4);
-        }
-
-        .silver-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.1rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin: 0;
-            background: linear-gradient(180deg, #ffffff 0%, #cfd5e6 50%, #8a94b2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 3px 10px rgba(255, 255, 255, 0.15);
         }
 
         .game-card p {
@@ -264,24 +228,6 @@
             background: linear-gradient(135deg, var(--btn-hover), var(--btn-bg));
             color: #000000;
             box-shadow: 0 0 15px var(--accent-glow);
-        }
-
-        .btn-coming-soon {
-            display: inline-block;
-            background: linear-gradient(135deg, #7b2cbf, #5a189a);
-            color: #ffffff;
-            text-decoration: none;
-            padding: 0.85rem 1.4rem;
-            border-radius: 8px;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 700;
-            text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-            cursor: default;
-            border: 1px solid #c77dff;
         }
 
         .card-action {
@@ -327,16 +273,13 @@
             
             <div class="game-grid">
                 
-                <!-- Game 1: FLY CD-i (Met update ballonnetje) -->
+                <!-- Game 1: FLY CD-i -->
                 <article class="game-card">
                     <div>
                         <h3>FLY CD-i</h3>
-                        
-                        <!-- Update ballonnetje toegevoegd -->
                         <div class="update-badge">
                             <span>🚀</span> <strong>Updated on 14-10-2026:</strong> completely new third level.
                         </div>
-
                         <img src="FLY.png" alt="FLY CD-i Screenshot" class="game-img">
                         <p>FLY CD-i is a unique arcade experience inspired by the remarkable 1982 classic River Raid. This CD-i version features three distinct themes, each lasting approximately five minutes.</p>
                     </div>
@@ -365,16 +308,13 @@
                     </div>
                 </article>
 
-                <!-- Game 3: Carnival CD-I (Met update ballonnetje) -->
+                <!-- Game 3: Carnival CD-I -->
                 <article class="game-card">
                     <div>
                         <h3>Carnival CD-I</h3>
-
-                        <!-- Update ballonnetje toegevoegd -->
                         <div class="update-badge">
                             <span>✨</span> <strong>Updated on 14-10-2026:</strong> music changes and enemies.
                         </div>
-
                         <img src="Carnival CD-I .png" alt="Carnival CD-I Screenshot" class="game-img">
                         <p>Carnival CD-I brings classic carnival action to the Philips CD-i. Enjoy fun arcade gameplay in this brand new homebrew release.</p>
                     </div>
@@ -403,25 +343,18 @@
                     </div>
                 </article>
 
-                <!-- Game 5: Microcosm (Coming Soon) -->
-                <article class="game-card coming-soon">
+                <!-- Game 5: Microcosm (Nu actief met download!) -->
+                <article class="game-card">
                     <div>
-                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
-                            <h3 style="margin:0; color:#c77dff;">Microcosm</h3>
-                            <span style="background-color:#7b2cbf; color:#e0aaff; font-family:'Orbitron',sans-serif; font-size:0.75rem; padding:0.25rem 0.6rem; border-radius:20px; border:1px solid #c77dff; text-transform:uppercase; letter-spacing:1px;">Coming Soon</span>
-                        </div>
-
-                        <div class="coming-soon-title-box">
-                            <h4 class="silver-title">MICROCOSM</h4>
-                        </div>
-
+                        <h3>Microcosm</h3>
+                        <img src="Microcosm.png" alt="Microcosm Screenshot" class="game-img">
                         <p>Full Motion Video adventure for Philips CD-i.<br><br><strong>DVC Cartridge Required</strong></p>
                     </div>
 
                     <div class="card-action">
-                        <div class="btn-coming-soon">Coming Soon</div>
-                        <p style="font-size:0.85rem; color:#c77dff; margin-top:0.6rem;">
-                            🎬 FMV Game
+                        <a href="#" class="btn-download" data-asset="Microcosm.rar" download>Download Game (RAR)</a>
+                        <p style="font-size:0.85rem; color:#aaaaaa; margin-top:0.6rem;">
+                            📥 Aantal downloads: <strong class="download-counter" data-asset="Microcosm.rar" style="color:#ffb703;">Laden...</strong>
                         </p>
                     </div>
                 </article>
