@@ -348,9 +348,9 @@
                     </div>
 
                     <div class="card-action">
-                        <a href="#" class="btn-download" data-game="microcosm" download>Download Game (RAR)</a>
+                        <a href="https://github.com/CondorGames/condorgames.github.io/releases/latest/download/Microcosm.CD-I.rar" class="btn-download" download>Download Game (RAR)</a>
                         <p style="font-size:0.85rem; color:#aaaaaa; margin-top:0.6rem;">
-                            📥 Aantal downloads: <strong class="download-counter" data-game="microcosm" style="color:#ffb703;">Laden...</strong>
+                            📥 Directe Download Link
                         </p>
                     </div>
                 </article>
@@ -367,9 +367,9 @@
                     </div>
                     
                     <div class="card-action">
-                        <a href="#" class="btn-download" data-game="fly" download>Download Game (RAR)</a>
+                        <a href="https://github.com/CondorGames/condorgames.github.io/releases/latest/download/FLY+CD-I.rar" class="btn-download" download>Download Game (RAR)</a>
                         <p style="font-size: 0.85rem; color: #aaaaaa; margin-top: 0.6rem;">
-                            📥 Aantal downloads: <strong class="download-counter" data-game="fly" style="color: #ffb703;">Laden...</strong>
+                            📥 Directe Download Link
                         </p>
                     </div>
                 </article>
@@ -386,9 +386,9 @@
                     </div>
 
                     <div class="card-action">
-                        <a href="#" class="btn-download" data-game="carnival" download>Download Game (RAR)</a>
+                        <a href="https://github.com/CondorGames/condorgames.github.io/releases/latest/download/CARNIVAL+CD-I.rar" class="btn-download" download>Download Game (RAR)</a>
                         <p style="font-size:0.85rem; color:#aaaaaa; margin-top:0.6rem;">
-                            📥 Aantal downloads: <strong class="download-counter" data-game="carnival" style="color:#ffb703;">Laden...</strong>
+                            📥 Directe Download Link
                         </p>
                     </div>
                 </article>
@@ -402,9 +402,9 @@
                     </div>
 
                     <div class="card-action">
-                        <a href="#" class="btn-download" data-game="circus" download>Download Game (RAR)</a>
+                        <a href="https://github.com/CondorGames/condorgames.github.io/releases/latest/download/Circus+CD-I.rar" class="btn-download" download>Download Game (RAR)</a>
                         <p style="font-size:0.85rem; color:#aaaaaa; margin-top:0.6rem;">
-                            📥 Aantal downloads: <strong class="download-counter" data-game="circus" style="color:#ffb703;">Laden...</strong>
+                            📥 Directe Download Link
                         </p>
                     </div>
                 </article>
@@ -418,9 +418,9 @@
                     </div>
                     
                     <div class="card-action">
-                        <a href="#" class="btn-download" data-game="frantic" download>Download Game (RAR)</a>
+                        <a href="https://github.com/CondorGames/condorgames.github.io/releases/latest/download/The+Frantic+Man.rar" class="btn-download" download>Download Game (RAR)</a>
                         <p style="font-size: 0.85rem; color: #aaaaaa; margin-top: 0.6rem;">
-                            📥 Aantal downloads: <strong class="download-counter" data-game="frantic" style="color: #ffb703;">Laden...</strong>
+                            📥 Directe Download Link
                         </p>
                     </div>
                 </article>
@@ -475,64 +475,6 @@
     <footer>
         <p>&copy; Condor Games - Philips CD-i Homebrew & Retro Development</p>
     </footer>
-
-    <!-- Verbeterd script dat feilloos zoekt op GitHub Releases -->
-    <script>
-        fetch('https://api.github.com/repos/CondorGames/condorgames.github.io/releases')
-            .then(res => res.json())
-            .then(releases => {
-                const gameData = {
-                    microcosm: { count: 0, url: '#' },
-                    fly: { count: 0, url: '#' },
-                    carnival: { count: 0, url: '#' },
-                    circus: { count: 0, url: '#' },
-                    frantic: { count: 0, url: '#' }
-                };
-
-                if (Array.isArray(releases)) {
-                    releases.forEach(release => {
-                        if (release.assets) {
-                            release.assets.forEach(asset => {
-                                const name = asset.name.toLowerCase();
-                                const info = {
-                                    count: asset.download_count,
-                                    url: asset.browser_download_url
-                                };
-
-                                if (name.includes('microcosm')) gameData.microcosm = info;
-                                else if (name.includes('fly')) gameData.fly = info;
-                                else if (name.includes('carnival')) gameData.carnival = info;
-                                else if (name.includes('circus')) gameData.circus = info;
-                                else if (name.includes('frantic')) gameData.frantic = info;
-                            });
-                        }
-                    });
-                }
-
-                // Koppel aan knoppen
-                document.querySelectorAll('.btn-download').forEach(btn => {
-                    const game = btn.getAttribute('data-game');
-                    if (game && gameData[game] && gameData[game].url !== '#') {
-                        btn.setAttribute('href', gameData[game].url);
-                    }
-                });
-
-                // Koppel aan tellers
-                document.querySelectorAll('.download-counter').forEach(el => {
-                    const game = el.getAttribute('data-game');
-                    if (game && gameData[game]) {
-                        el.innerText = gameData[game].count;
-                    } else {
-                        el.innerText = '0';
-                    }
-                });
-            })
-            .catch(() => {
-                document.querySelectorAll('.download-counter').forEach(el => {
-                    el.innerText = '0';
-                });
-            });
-    </script>
 
 </body>
 </html>
