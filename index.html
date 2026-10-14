@@ -199,12 +199,12 @@
             font-size: 1.4rem;
         }
 
-        /* Afbeeldingen compacter & geen zwarte balken meer */
+        /* Zorgt dat het volledige plaatje zichtbaar is zonder af te snijden */
         .game-img {
             width: 100%;
             height: 160px;
-            object-fit: cover;
-            object-position: center;
+            object-fit: contain;
+            background-color: #0b0d13;
             border-radius: 8px;
             border: 1px solid var(--border-color);
             margin: 0 auto 1rem auto;
@@ -343,6 +343,9 @@
                 <article class="game-card">
                     <div>
                         <h3>Microcosm</h3>
+                        <div class="update-badge">
+                            <span>⚠️</span> <strong>Note:</strong> Do not play it entirely on an emulator (without music); play it only on a real CD-i player.
+                        </div>
                         <img src="MicroCosm.png" alt="Microcosm Screenshot" class="game-img">
                         <p>Full Motion Video adventure for Philips CD-i.<br><br><strong>DVC Cartridge Required</strong></p>
                     </div>
@@ -476,7 +479,7 @@
         <p>&copy; Condor Games - Philips CD-i Homebrew & Retro Development</p>
     </footer>
 
-    <!-- Geüpdatet script voor dynamische downloadlinks & tellers -->
+    <!-- Script voor dynamische downloadlinks & tellers -->
     <script>
         fetch('https://api.github.com/repos/CondorGames/condorgames.github.io/releases')
             .then(res => res.json())
@@ -493,7 +496,6 @@
                                     url: asset.browser_download_url
                                 };
 
-                                // Koppel trefwoorden flexibel aan de assets in GitHub
                                 if (nameLower.includes('microcosm')) assetData['microcosm'] = info;
                                 if (nameLower.includes('fly')) assetData['fly'] = info;
                                 if (nameLower.includes('carnival')) assetData['carnival'] = info;
@@ -504,7 +506,6 @@
                     });
                 }
 
-                // Update de knoppen en tellers
                 document.querySelectorAll('.btn-download').forEach(btn => {
                     const key = btn.getAttribute('data-asset');
                     if (key && assetData[key]) {
