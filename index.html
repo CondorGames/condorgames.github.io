@@ -11,7 +11,7 @@
     <!-- Google Search Console Verificatie -->
     <meta name="google-site-verification" content="N58g2NeXyZMzZgMcrXDTO_pxj1uHhTH08oTGQP47s4A" />
     
-    <!-- Google Fonts voor een stoere gaming look -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
@@ -26,6 +26,8 @@
             --accent-glow: rgba(255, 183, 3, 0.3);
             --btn-bg: #d48806;
             --btn-hover: #ffb703;
+            --coming-soon-color: #9d4edd;
+            --coming-soon-glow: rgba(157, 78, 221, 0.4);
             --update-badge-bg: rgba(255, 183, 3, 0.15);
             --update-badge-border: #ffb703;
         }
@@ -81,7 +83,7 @@
         }
 
         .container {
-            max-width: 950px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 0 1.5rem 3rem 1.5rem;
         }
@@ -142,10 +144,23 @@
             letter-spacing: 1px;
         }
 
+        /* Grid aangepast naar 3 vakken (kolommen) naast elkaar */
         .game-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 1.8rem;
+        }
+
+        @media (max-width: 900px) {
+            .game-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .game-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         .game-card {
@@ -167,6 +182,16 @@
             box-shadow: 0 8px 25px var(--accent-glow);
         }
 
+        .game-card.coming-soon {
+            border-color: var(--coming-soon-color);
+            background: linear-gradient(145deg, #12151e 0%, #191225 100%);
+        }
+
+        .game-card.coming-soon:hover {
+            border-color: #c77dff;
+            box-shadow: 0 8px 25px var(--coming-soon-glow);
+        }
+
         .game-card h3 {
             font-family: 'Orbitron', sans-serif;
             color: #ffffff;
@@ -175,11 +200,12 @@
             font-size: 1.4rem;
         }
 
+        /* Zorgt dat hele afbeeldingen zichtbaar zijn zonder afsnijden */
         .game-img {
             width: 100%;
-            max-width: 360px;
             aspect-ratio: 16 / 9;
-            object-fit: cover;
+            object-fit: contain;
+            background-color: #0b0d13;
             border-radius: 8px;
             border: 1px solid var(--border-color);
             margin: 0 auto 1rem auto;
@@ -199,6 +225,29 @@
             gap: 0.5rem;
             font-weight: 600;
             box-shadow: 0 2px 8px rgba(255, 183, 3, 0.1);
+        }
+
+        .coming-soon-title-box {
+            background: linear-gradient(135deg, #1a1b24 0%, #0d0e14 100%);
+            border: 2px solid #a0a8c0;
+            border-radius: 10px;
+            padding: 2.2rem 1rem;
+            text-align: center;
+            margin: 0 auto 1.5rem auto;
+            box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.05), 0 5px 15px rgba(0,0,0,0.4);
+        }
+
+        .silver-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 0;
+            background: linear-gradient(180deg, #ffffff 0%, #cfd5e6 50%, #8a94b2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 3px 10px rgba(255, 255, 255, 0.15);
         }
 
         .game-card p {
@@ -228,6 +277,24 @@
             background: linear-gradient(135deg, var(--btn-hover), var(--btn-bg));
             color: #000000;
             box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        .btn-coming-soon {
+            display: inline-block;
+            background: linear-gradient(135deg, #7b2cbf, #5a189a);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 0.85rem 1.4rem;
+            border-radius: 8px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+            cursor: default;
+            border: 1px solid #c77dff;
         }
 
         .card-action {
@@ -273,15 +340,31 @@
             
             <div class="game-grid">
                 
-                <!-- Game 1: FLY CD-i -->
+                <!-- 1. NIEUWSTE RELEASE: Microcosm -->
+                <article class="game-card">
+                    <div>
+                        <h3>Microcosm</h3>
+                        <img src="Microcosm.png" alt="Microcosm Screenshot" class="game-img">
+                        <p>Full Motion Video adventure for Philips CD-i.<br><br><strong>DVC Cartridge Required</strong></p>
+                    </div>
+
+                    <div class="card-action">
+                        <a href="#" class="btn-download" data-asset="Microcosm.rar" download>Download Game (RAR)</a>
+                        <p style="font-size:0.85rem; color:#aaaaaa; margin-top:0.6rem;">
+                            📥 Aantal downloads: <strong class="download-counter" data-asset="Microcosm.rar" style="color:#ffb703;">Laden...</strong>
+                        </p>
+                    </div>
+                </article>
+
+                <!-- 2. RECENTE UPDATE: FLY CD-i -->
                 <article class="game-card">
                     <div>
                         <h3>FLY CD-i</h3>
                         <div class="update-badge">
                             <span>🚀</span> <strong>Updated on 14-10-2026:</strong> completely new third level.
                         </div>
-                        <img src="FLY.png" alt="FLY CD-i Screenshot" class="game-img">
-                        <p>FLY CD-i is a unique arcade experience inspired by the remarkable 1982 classic River Raid. This CD-i version features three distinct themes, each lasting approximately five minutes.</p>
+                        <img src="FLY CD-I.rar.png" alt="FLY CD-i Screenshot" class="game-img">
+                        <p>FLY CD-i is a unique arcade experience inspired by River Raid. This CD-i version features three distinct themes, each lasting approximately five minutes.</p>
                     </div>
                     
                     <div class="card-action">
@@ -292,23 +375,7 @@
                     </div>
                 </article>
 
-                <!-- Game 2: The Frantic Man -->
-                <article class="game-card">
-                    <div>
-                        <h3>The Frantic Man</h3>
-                        <img src="The Frantic Man.png" alt="The Frantic Man Screenshot" class="game-img">
-                        <p>This CD-i game is inspired by Frantic Freddie and was released in 2018. It reimagines the classic arcade hit in the distinctive style of the CD-i platform.</p>
-                    </div>
-                    
-                    <div class="card-action">
-                        <a href="#" class="btn-download" data-asset="The Frantic Man .rar" download>Download Game (RAR)</a>
-                        <p style="font-size: 0.85rem; color: #aaaaaa; margin-top: 0.6rem;">
-                            📥 Aantal downloads: <strong class="download-counter" data-asset="The Frantic Man .rar" style="color: #ffb703;">Laden...</strong>
-                        </p>
-                    </div>
-                </article>
-
-                <!-- Game 3: Carnival CD-I -->
+                <!-- 3. RECENTE UPDATE: Carnival CD-I -->
                 <article class="game-card">
                     <div>
                         <h3>Carnival CD-I</h3>
@@ -327,7 +394,7 @@
                     </div>
                 </article>
 
-                <!-- Game 4: Circus CD-I -->
+                <!-- 4. Circus CD-I -->
                 <article class="game-card">
                     <div>
                         <h3>Circus CD-I</h3>
@@ -343,18 +410,41 @@
                     </div>
                 </article>
 
-                <!-- Game 5: Microcosm (Nu actief met download!) -->
+                <!-- 5. The Frantic Man -->
                 <article class="game-card">
                     <div>
-                        <h3>Microcosm</h3>
-                        <img src="Microcosm.png" alt="Microcosm Screenshot" class="game-img">
-                        <p>Full Motion Video adventure for Philips CD-i.<br><br><strong>DVC Cartridge Required</strong></p>
+                        <h3>The Frantic Man</h3>
+                        <img src="The Frantic Man.png" alt="The Frantic Man Screenshot" class="game-img">
+                        <p>This CD-i game is inspired by Frantic Freddie. It reimagines the classic arcade hit in the distinctive style of the CD-i platform.</p>
+                    </div>
+                    
+                    <div class="card-action">
+                        <a href="#" class="btn-download" data-asset="The Frantic Man .rar" download>Download Game (RAR)</a>
+                        <p style="font-size: 0.85rem; color: #aaaaaa; margin-top: 0.6rem;">
+                            📥 Aantal downloads: <strong class="download-counter" data-asset="The Frantic Man .rar" style="color: #ffb703;">Laden...</strong>
+                        </p>
+                    </div>
+                </article>
+
+                <!-- 6. NIEUWE COMING SOON: Jumpie Froggie 3D -->
+                <article class="game-card coming-soon">
+                    <div>
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+                            <h3 style="margin:0; color:#c77dff;">Jumpie Froggie 3D</h3>
+                            <span style="background-color:#7b2cbf; color:#e0aaff; font-family:'Orbitron',sans-serif; font-size:0.75rem; padding:0.25rem 0.6rem; border-radius:20px; border:1px solid #c77dff; text-transform:uppercase; letter-spacing:1px;">Coming Soon</span>
+                        </div>
+
+                        <div class="coming-soon-title-box">
+                            <h4 class="silver-title">JUMPIE FROGGIE 3D</h4>
+                        </div>
+
+                        <p>A brand new 3D platforming adventure currently in development for the Philips CD-i!</p>
                     </div>
 
                     <div class="card-action">
-                        <a href="#" class="btn-download" data-asset="Microcosm.rar" download>Download Game (RAR)</a>
-                        <p style="font-size:0.85rem; color:#aaaaaa; margin-top:0.6rem;">
-                            📥 Aantal downloads: <strong class="download-counter" data-asset="Microcosm.rar" style="color:#ffb703;">Laden...</strong>
+                        <div class="btn-coming-soon">Coming Soon</div>
+                        <p style="font-size:0.85rem; color:#c77dff; margin-top:0.6rem;">
+                            🐸 3D Action Game
                         </p>
                     </div>
                 </article>
