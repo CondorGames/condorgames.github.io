@@ -199,7 +199,6 @@
             font-size: 1.4rem;
         }
 
-        /* Volledige afbeelding zichtbaar zonder afsnijden */
         .game-img {
             width: 100%;
             height: 160px;
@@ -349,14 +348,14 @@
                     </div>
 
                     <div class="card-action">
-                        <a href="#" class="btn-download" data-asset="microcosm" download>Download Game (RAR)</a>
+                        <a href="#" class="btn-download" data-game="microcosm" download>Download Game (RAR)</a>
                         <p style="font-size:0.85rem; color:#aaaaaa; margin-top:0.6rem;">
-                            📥 Aantal downloads: <strong class="download-counter" data-asset="microcosm" style="color:#ffb703;">Laden...</strong>
+                            📥 Aantal downloads: <strong class="download-counter" data-game="microcosm" style="color:#ffb703;">Laden...</strong>
                         </p>
                     </div>
                 </article>
 
-                <!-- 2. FLY CD-i (Juiste tekst: completely new third level) -->
+                <!-- 2. FLY CD-i -->
                 <article class="game-card">
                     <div>
                         <h3>FLY CD-i</h3>
@@ -368,14 +367,14 @@
                     </div>
                     
                     <div class="card-action">
-                        <a href="#" class="btn-download" data-asset="fly" download>Download Game (RAR)</a>
+                        <a href="#" class="btn-download" data-game="fly" download>Download Game (RAR)</a>
                         <p style="font-size: 0.85rem; color: #aaaaaa; margin-top: 0.6rem;">
-                            📥 Aantal downloads: <strong class="download-counter" data-asset="fly" style="color: #ffb703;">Laden...</strong>
+                            📥 Aantal downloads: <strong class="download-counter" data-game="fly" style="color: #ffb703;">Laden...</strong>
                         </p>
                     </div>
                 </article>
 
-                <!-- 3. Carnival CD-I (Juiste tekst: music changes and enemies) -->
+                <!-- 3. Carnival CD-I -->
                 <article class="game-card">
                     <div>
                         <h3>Carnival CD-I</h3>
@@ -387,9 +386,9 @@
                     </div>
 
                     <div class="card-action">
-                        <a href="#" class="btn-download" data-asset="carnival" download>Download Game (RAR)</a>
+                        <a href="#" class="btn-download" data-game="carnival" download>Download Game (RAR)</a>
                         <p style="font-size:0.85rem; color:#aaaaaa; margin-top:0.6rem;">
-                            📥 Aantal downloads: <strong class="download-counter" data-asset="carnival" style="color:#ffb703;">Laden...</strong>
+                            📥 Aantal downloads: <strong class="download-counter" data-game="carnival" style="color:#ffb703;">Laden...</strong>
                         </p>
                     </div>
                 </article>
@@ -403,9 +402,9 @@
                     </div>
 
                     <div class="card-action">
-                        <a href="#" class="btn-download" data-asset="circus" download>Download Game (RAR)</a>
+                        <a href="#" class="btn-download" data-game="circus" download>Download Game (RAR)</a>
                         <p style="font-size:0.85rem; color:#aaaaaa; margin-top:0.6rem;">
-                            📥 Aantal downloads: <strong class="download-counter" data-asset="circus" style="color:#ffb703;">Laden...</strong>
+                            📥 Aantal downloads: <strong class="download-counter" data-game="circus" style="color:#ffb703;">Laden...</strong>
                         </p>
                     </div>
                 </article>
@@ -419,9 +418,9 @@
                     </div>
                     
                     <div class="card-action">
-                        <a href="#" class="btn-download" data-asset="frantic" download>Download Game (RAR)</a>
+                        <a href="#" class="btn-download" data-game="frantic" download>Download Game (RAR)</a>
                         <p style="font-size: 0.85rem; color: #aaaaaa; margin-top: 0.6rem;">
-                            📥 Aantal downloads: <strong class="download-counter" data-asset="frantic" style="color: #ffb703;">Laden...</strong>
+                            📥 Aantal downloads: <strong class="download-counter" data-game="frantic" style="color: #ffb703;">Laden...</strong>
                         </p>
                     </div>
                 </article>
@@ -477,44 +476,52 @@
         <p>&copy; Condor Games - Philips CD-i Homebrew & Retro Development</p>
     </footer>
 
-    <!-- Script voor dynamische downloadlinks & tellers -->
+    <!-- Verbeterd script dat feilloos zoekt op GitHub Releases -->
     <script>
         fetch('https://api.github.com/repos/CondorGames/condorgames.github.io/releases')
             .then(res => res.json())
             .then(releases => {
-                const assetData = {};
+                const gameData = {
+                    microcosm: { count: 0, url: '#' },
+                    fly: { count: 0, url: '#' },
+                    carnival: { count: 0, url: '#' },
+                    circus: { count: 0, url: '#' },
+                    frantic: { count: 0, url: '#' }
+                };
 
                 if (Array.isArray(releases)) {
                     releases.forEach(release => {
                         if (release.assets) {
                             release.assets.forEach(asset => {
-                                const nameLower = asset.name.toLowerCase();
+                                const name = asset.name.toLowerCase();
                                 const info = {
                                     count: asset.download_count,
                                     url: asset.browser_download_url
                                 };
 
-                                if (nameLower.includes('microcosm')) assetData['microcosm'] = info;
-                                if (nameLower.includes('fly')) assetData['fly'] = info;
-                                if (nameLower.includes('carnival')) assetData['carnival'] = info;
-                                if (nameLower.includes('circus')) assetData['circus'] = info;
-                                if (nameLower.includes('frantic')) assetData['frantic'] = info;
+                                if (name.includes('microcosm')) gameData.microcosm = info;
+                                else if (name.includes('fly')) gameData.fly = info;
+                                else if (name.includes('carnival')) gameData.carnival = info;
+                                else if (name.includes('circus')) gameData.circus = info;
+                                else if (name.includes('frantic')) gameData.frantic = info;
                             });
                         }
                     });
                 }
 
+                // Koppel aan knoppen
                 document.querySelectorAll('.btn-download').forEach(btn => {
-                    const key = btn.getAttribute('data-asset');
-                    if (key && assetData[key]) {
-                        btn.setAttribute('href', assetData[key].url);
+                    const game = btn.getAttribute('data-game');
+                    if (game && gameData[game] && gameData[game].url !== '#') {
+                        btn.setAttribute('href', gameData[game].url);
                     }
                 });
 
+                // Koppel aan tellers
                 document.querySelectorAll('.download-counter').forEach(el => {
-                    const key = el.getAttribute('data-asset');
-                    if (key && assetData[key]) {
-                        el.innerText = assetData[key].count;
+                    const game = el.getAttribute('data-game');
+                    if (game && gameData[game]) {
+                        el.innerText = gameData[game].count;
                     } else {
                         el.innerText = '0';
                     }
