@@ -28,6 +28,8 @@
             --btn-hover: #ffb703;
             --coming-soon-color: #9d4edd;
             --coming-soon-glow: rgba(157, 78, 221, 0.4);
+            --update-badge-bg: rgba(255, 183, 3, 0.15);
+            --update-badge-border: #ffb703;
         }
 
         body {
@@ -196,6 +198,22 @@
             display: block;
         }
 
+        /* Stijl voor de update ballonnetjes / notificaties */
+        .update-badge {
+            background: var(--update-badge-bg);
+            border: 1px solid var(--update-badge-border);
+            color: #ffb703;
+            font-size: 0.85rem;
+            padding: 0.5rem 0.8rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(255, 183, 3, 0.1);
+        }
+
         .coming-soon-title-box {
             background: linear-gradient(135deg, #1a1b24 0%, #0d0e14 100%);
             border: 2px solid #a0a8c0;
@@ -309,10 +327,16 @@
             
             <div class="game-grid">
                 
-                <!-- Game 1: FLY CD-i -->
+                <!-- Game 1: FLY CD-i (Met update ballonnetje) -->
                 <article class="game-card">
                     <div>
                         <h3>FLY CD-i</h3>
+                        
+                        <!-- Update ballonnetje toegevoegd -->
+                        <div class="update-badge">
+                            <span>🚀</span> <strong>Updated on 14-10-2026:</strong> completely new third level.
+                        </div>
+
                         <img src="FLY.png" alt="FLY CD-i Screenshot" class="game-img">
                         <p>FLY CD-i is a unique arcade experience inspired by the remarkable 1982 classic River Raid. This CD-i version features three distinct themes, each lasting approximately five minutes.</p>
                     </div>
@@ -341,10 +365,16 @@
                     </div>
                 </article>
 
-                <!-- Game 3: Carnival CD-I -->
+                <!-- Game 3: Carnival CD-I (Met update ballonnetje) -->
                 <article class="game-card">
                     <div>
                         <h3>Carnival CD-I</h3>
+
+                        <!-- Update ballonnetje toegevoegd -->
+                        <div class="update-badge">
+                            <span>✨</span> <strong>Updated on 14-10-2026:</strong> music changes and enemies.
+                        </div>
+
                         <img src="Carnival CD-I .png" alt="Carnival CD-I Screenshot" class="game-img">
                         <p>Carnival CD-I brings classic carnival action to the Philips CD-i. Enjoy fun arcade gameplay in this brand new homebrew release.</p>
                     </div>
@@ -358,3 +388,135 @@
                 </article>
 
                 <!-- Game 4: Circus CD-I -->
+                <article class="game-card">
+                    <div>
+                        <h3>Circus CD-I</h3>
+                        <img src="Circus CD-I.png" alt="Circus CD-I Screenshot" class="game-img">
+                        <p>Circus CD-I is a colorful retro arcade experience created especially for Philips CD-i enthusiasts.</p>
+                    </div>
+
+                    <div class="card-action">
+                        <a href="#" class="btn-download" data-asset="Circus CD-I.rar" download>Download Game (RAR)</a>
+                        <p style="font-size:0.85rem; color:#aaaaaa; margin-top:0.6rem;">
+                            📥 Aantal downloads: <strong class="download-counter" data-asset="Circus CD-I.rar" style="color:#ffb703;">Laden...</strong>
+                        </p>
+                    </div>
+                </article>
+
+                <!-- Game 5: Microcosm (Coming Soon) -->
+                <article class="game-card coming-soon">
+                    <div>
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+                            <h3 style="margin:0; color:#c77dff;">Microcosm</h3>
+                            <span style="background-color:#7b2cbf; color:#e0aaff; font-family:'Orbitron',sans-serif; font-size:0.75rem; padding:0.25rem 0.6rem; border-radius:20px; border:1px solid #c77dff; text-transform:uppercase; letter-spacing:1px;">Coming Soon</span>
+                        </div>
+
+                        <div class="coming-soon-title-box">
+                            <h4 class="silver-title">MICROCOSM</h4>
+                        </div>
+
+                        <p>Full Motion Video adventure for Philips CD-i.<br><br><strong>DVC Cartridge Required</strong></p>
+                    </div>
+
+                    <div class="card-action">
+                        <div class="btn-coming-soon">Coming Soon</div>
+                        <p style="font-size:0.85rem; color:#c77dff; margin-top:0.6rem;">
+                            🎬 FMV Game
+                        </p>
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- Reacties via Giscus -->
+            <div style="margin-top: 3rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem;">
+                <h3 style="margin-bottom: 1rem; color: #ffffff; font-family: 'Orbitron', sans-serif;">Reacties</h3>
+                <script src="https://giscus.app/client.js"
+                        data-repo="CondorGames/condorgames.github.io"
+                        data-repo-id="R_kgDOU59Ifw"
+                        data-category="General"
+                        data-category-id="DIC_kwDOU59If84DHAu5"
+                        data-mapping="pathname"
+                        data-strict="0"
+                        data-reactions-enabled="1"
+                        data-emit-metadata="0"
+                        data-input-position="top"
+                        data-theme="dark"
+                        data-lang="nl"
+                        crossorigin="anonymous"
+                        async>
+                </script>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; Condor Games - Philips CD-i Homebrew & Retro Development</p>
+    </footer>
+
+    <!-- Geautomatiseerd script voor dynamische downloadlinks & tellers -->
+    <script>
+        fetch('https://api.github.com/repos/CondorGames/condorgames.github.io/releases')
+            .then(res => res.json())
+            .then(releases => {
+                const assetData = {};
+
+                if (Array.isArray(releases)) {
+                    releases.forEach(release => {
+                        if (release.assets) {
+                            release.assets.forEach(asset => {
+                                const nameOriginal = asset.name.toLowerCase();
+                                const nameClean = nameOriginal.replace(/[\s\._-]+/g, '');
+                                
+                                const info = {
+                                    count: asset.download_count,
+                                    url: asset.browser_download_url
+                                };
+
+                                assetData[nameOriginal] = info;
+                                assetData[nameClean] = info;
+                            });
+                        }
+                    });
+                }
+
+                // Update de downloadknoppen en tellers automatisch
+                document.querySelectorAll('.btn-download').forEach(btn => {
+                    const target = btn.getAttribute('data-asset');
+                    if (target) {
+                        const targetOrig = target.toLowerCase();
+                        const targetClean = targetOrig.replace(/[\s\._-]+/g, '');
+                        const found = assetData[targetOrig] || assetData[targetClean];
+                        
+                        if (found) {
+                            btn.setAttribute('href', found.url);
+                        }
+                    }
+                });
+
+                document.querySelectorAll('.download-counter').forEach(el => {
+                    const target = el.getAttribute('data-asset');
+                    if (target) {
+                        const targetOrig = target.toLowerCase();
+                        const targetClean = targetOrig.replace(/[\s\._-]+/g, '');
+                        const found = assetData[targetOrig] || assetData[targetClean];
+                        
+                        if (found) {
+                            el.innerText = found.count;
+                        } else {
+                            el.innerText = '0';
+                        }
+                    } else {
+                        el.innerText = '0';
+                    }
+                });
+            })
+            .catch(() => {
+                document.querySelectorAll('.download-counter').forEach(el => {
+                    el.innerText = '0';
+                });
+            });
+    </script>
+
+</body>
+</html>
