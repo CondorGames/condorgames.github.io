@@ -336,7 +336,23 @@
             
             <div class="game-grid">
                 
-                <!-- 1. Microcosm -->
+                <!-- 1. NIEUW: Jumpy Froggy 3D -->
+                <article class="game-card">
+                    <div>
+                        <h3>Jumpy Froggy 3D</h3>
+                        <img src="Jumpy Froggy 3D.png" alt="Jumpy Froggy 3D Screenshot" class="game-img">
+                        <p>Jumpy Frogger 3D is a lively game for the CD-i that features a total of five completely different levels.</p>
+                    </div>
+
+                    <div class="card-action">
+                        <a href="https://github.com/CondorGames/condorgames.github.io/releases/latest/download/Jumpy+Froggy+3D.rar" class="btn-download" download>Download Game (RAR)</a>
+                        <p style="font-size:0.85rem; color:#aaaaaa; margin-top:0.6rem;">
+                            📥 Aantal downloads: <strong class="download-counter" data-game="jumpy" style="color:#ffb703;">Laden...</strong>
+                        </p>
+                    </div>
+                </article>
+
+                <!-- 2. Microcosm -->
                 <article class="game-card">
                     <div>
                         <h3>Microcosm</h3>
@@ -355,14 +371,13 @@
                     </div>
                 </article>
 
-                <!-- 2. FLY CD-i -->
+                <!-- 3. FLY CD-i -->
                 <article class="game-card">
                     <div>
                         <h3>FLY CD-i</h3>
                         <div class="update-badge">
                             <span>✨</span> <strong>Updated on 14-10-2026:</strong><br>music changes and enemies.
                         </div>
-                        <!-- Aangepaste bestandsnaam hieronder: FLY CD-I.png -->
                         <img src="FLY CD-I.png" alt="FLY CD-i Screenshot" class="game-img">
                         <p>FLY CD-i is a unique arcade experience inspired by River Raid. This CD-i version features three distinct themes, each lasting approximately five minutes.</p>
                     </div>
@@ -375,7 +390,7 @@
                     </div>
                 </article>
 
-                <!-- 3. Carnival CD-I -->
+                <!-- 4. Carnival CD-I -->
                 <article class="game-card">
                     <div>
                         <h3>Carnival CD-I</h3>
@@ -394,7 +409,7 @@
                     </div>
                 </article>
 
-                <!-- 4. Circus CD-I -->
+                <!-- 5. Circus CD-I -->
                 <article class="game-card">
                     <div>
                         <h3>Circus CD-I</h3>
@@ -410,7 +425,7 @@
                     </div>
                 </article>
 
-                <!-- 5. The Frantic Man -->
+                <!-- 6. The Frantic Man -->
                 <article class="game-card">
                     <div>
                         <h3>The Frantic Man</h3>
@@ -426,25 +441,25 @@
                     </div>
                 </article>
 
-                <!-- 6. Jumpie Froggie 3D (Coming Soon) -->
+                <!-- 7. Train Traffic (Coming Soon) -->
                 <article class="game-card coming-soon">
                     <div>
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
-                            <h3 style="margin:0; color:#c77dff; font-size:1.2rem;">Jumpie Froggie 3D</h3>
+                            <h3 style="margin:0; color:#c77dff; font-size:1.2rem;">Train Traffic</h3>
                             <span style="background-color:#7b2cbf; color:#e0aaff; font-family:'Orbitron',sans-serif; font-size:0.75rem; padding:0.25rem 0.6rem; border-radius:20px; border:1px solid #c77dff; text-transform:uppercase; letter-spacing:1px;">Coming Soon</span>
                         </div>
 
                         <div class="coming-soon-title-box">
-                            <h4 class="silver-title">JUMPIE FROGGIE 3D</h4>
+                            <h4 class="silver-title">TRAIN TRAFFIC</h4>
                         </div>
 
-                        <p>A brand new 3D platforming adventure currently in development for the Philips CD-i!</p>
+                        <p>Train Traffic is a railway game for CD-I</p>
                     </div>
 
                     <div class="card-action">
                         <div class="btn-coming-soon">Coming Soon</div>
                         <p style="font-size:0.85rem; color:#c77dff; margin-top:0.6rem;">
-                            🐸 3D Action Game
+                            🚂 Railway Game
                         </p>
                     </div>
                 </article>
@@ -483,6 +498,7 @@
             .then(res => res.json())
             .then(releases => {
                 const downloadCounts = {
+                    jumpy: 0,
                     microcosm: 0,
                     fly: 0,
                     carnival: 0,
@@ -497,7 +513,8 @@
                                 const name = asset.name.toLowerCase();
                                 const count = asset.download_count || 0;
 
-                                if (name.includes('microcosm')) downloadCounts.microcosm = count;
+                                if (name.includes('jumpy')) downloadCounts.jumpy = count;
+                                else if (name.includes('microcosm')) downloadCounts.microcosm = count;
                                 else if (name.includes('fly')) downloadCounts.fly = count;
                                 else if (name.includes('carnival')) downloadCounts.carnival = count;
                                 else if (name.includes('circus')) downloadCounts.circus = count;
@@ -520,4 +537,7 @@
                     el.innerText = '0';
                 });
             });
-    </
+    </script>
+
+</body>
+</html>
