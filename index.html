@@ -336,7 +336,7 @@
             
             <div class="game-grid">
                 
-                <!-- 1. NIEUW: Jumpy Froggy 3D -->
+                <!-- 1. Jumpy Froggy 3D -->
                 <article class="game-card">
                     <div>
                         <h3>Jumpy Froggy 3D</h3>
@@ -345,9 +345,9 @@
                     </div>
 
                     <div class="card-action">
-                        <a href="https://github.com/CondorGames/condorgames.github.io/releases/latest/download/Jumpy+Froggy+3D.rar" class="btn-download" download>Download Game (RAR)</a>
+                        <a href="https://github.com/CondorGames/condorgames.github.io/releases/latest/download/Jumpy%20Froggy%203D.rar" class="btn-download" download>Download Game (RAR)</a>
                         <p style="font-size:0.85rem; color:#aaaaaa; margin-top:0.6rem;">
-                            📥 Aantal downloads: <strong class="download-counter" data-game="jumpy" style="color:#ffb703;">Laden...</strong>
+                            📥 Aantal downloads: <strong class="download-counter" data-game="jumpy" style="color:#ffb703;">0</strong>
                         </p>
                     </div>
                 </article>
@@ -366,7 +366,7 @@
                     <div class="card-action">
                         <a href="https://github.com/CondorGames/condorgames.github.io/releases/latest/download/Microcosm.CD-I.rar" class="btn-download" download>Download Game (RAR)</a>
                         <p style="font-size:0.85rem; color:#aaaaaa; margin-top:0.6rem;">
-                            📥 Aantal downloads: <strong class="download-counter" data-game="microcosm" style="color:#ffb703;">Laden...</strong>
+                            📥 Aantal downloads: <strong class="download-counter" data-game="microcosm" style="color:#ffb703;">0</strong>
                         </p>
                     </div>
                 </article>
@@ -385,7 +385,7 @@
                     <div class="card-action">
                         <a href="https://github.com/CondorGames/condorgames.github.io/releases/latest/download/FLY+CD-I.rar" class="btn-download" download>Download Game (RAR)</a>
                         <p style="font-size: 0.85rem; color: #aaaaaa; margin-top: 0.6rem;">
-                            📥 Aantal downloads: <strong class="download-counter" data-game="fly" style="color:#ffb703;">Laden...</strong>
+                            📥 Aantal downloads: <strong class="download-counter" data-game="fly" style="color:#ffb703;">0</strong>
                         </p>
                     </div>
                 </article>
@@ -404,7 +404,7 @@
                     <div class="card-action">
                         <a href="https://github.com/CondorGames/condorgames.github.io/releases/latest/download/CARNIVAL+CD-I.rar" class="btn-download" download>Download Game (RAR)</a>
                         <p style="font-size:0.85rem; color:#aaaaaa; margin-top:0.6rem;">
-                            📥 Aantal downloads: <strong class="download-counter" data-game="carnival" style="color:#ffb703;">Laden...</strong>
+                            📥 Aantal downloads: <strong class="download-counter" data-game="carnival" style="color:#ffb703;">0</strong>
                         </p>
                     </div>
                 </article>
@@ -420,7 +420,7 @@
                     <div class="card-action">
                         <a href="https://github.com/CondorGames/condorgames.github.io/releases/latest/download/Circus+CD-I.rar" class="btn-download" download>Download Game (RAR)</a>
                         <p style="font-size:0.85rem; color:#aaaaaa; margin-top:0.6rem;">
-                            📥 Aantal downloads: <strong class="download-counter" data-game="circus" style="color:#ffb703;">Laden...</strong>
+                            📥 Aantal downloads: <strong class="download-counter" data-game="circus" style="color:#ffb703;">0</strong>
                         </p>
                     </div>
                 </article>
@@ -436,7 +436,7 @@
                     <div class="card-action">
                         <a href="https://github.com/CondorGames/condorgames.github.io/releases/latest/download/The+Frantic+Man.rar" class="btn-download" download>Download Game (RAR)</a>
                         <p style="font-size: 0.85rem; color: #aaaaaa; margin-top: 0.6rem;">
-                            📥 Aantal downloads: <strong class="download-counter" data-game="frantic" style="color:#ffb703;">Laden...</strong>
+                            📥 Aantal downloads: <strong class="download-counter" data-game="frantic" style="color:#ffb703;">0</strong>
                         </p>
                     </div>
                 </article>
@@ -467,77 +467,3 @@
             </div>
 
             <!-- Reacties via Giscus -->
-            <div style="margin-top: 3rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem;">
-                <h3 style="margin-bottom: 1rem; color: #ffffff; font-family: 'Orbitron', sans-serif;">Reacties</h3>
-                <script src="https://giscus.app/client.js"
-                        data-repo="CondorGames/condorgames.github.io"
-                        data-repo-id="R_kgDOU59Ifw"
-                        data-category="General"
-                        data-category-id="DIC_kwDOU59If84DHAu5"
-                        data-mapping="pathname"
-                        data-strict="0"
-                        data-reactions-enabled="1"
-                        data-emit-metadata="0"
-                        data-input-position="top"
-                        data-theme="dark"
-                        data-lang="nl"
-                        crossorigin="anonymous"
-                        async>
-                </script>
-            </div>
-        </section>
-    </div>
-
-    <footer>
-        <p>&copy; Condor Games - Philips CD-i Homebrew & Retro Development</p>
-    </footer>
-
-    <!-- Script om de downloadtellingen op te halen via GitHub API -->
-    <script>
-        fetch('https://api.github.com/repos/CondorGames/condorgames.github.io/releases')
-            .then(res => res.json())
-            .then(releases => {
-                const downloadCounts = {
-                    jumpy: 0,
-                    microcosm: 0,
-                    fly: 0,
-                    carnival: 0,
-                    circus: 0,
-                    frantic: 0
-                };
-
-                if (Array.isArray(releases)) {
-                    releases.forEach(release => {
-                        if (release.assets) {
-                            release.assets.forEach(asset => {
-                                const name = asset.name.toLowerCase();
-                                const count = asset.download_count || 0;
-
-                                if (name.includes('jumpy')) downloadCounts.jumpy = count;
-                                else if (name.includes('microcosm')) downloadCounts.microcosm = count;
-                                else if (name.includes('fly')) downloadCounts.fly = count;
-                                else if (name.includes('carnival')) downloadCounts.carnival = count;
-                                else if (name.includes('circus')) downloadCounts.circus = count;
-                                else if (name.includes('frantic')) downloadCounts.frantic = count;
-                            });
-                        }
-                    });
-                }
-
-                // Vul de tellers in op de website
-                document.querySelectorAll('.download-counter').forEach(el => {
-                    const game = el.getAttribute('data-game');
-                    if (game && downloadCounts[game] !== undefined) {
-                        el.innerText = downloadCounts[game];
-                    }
-                });
-            })
-            .catch(() => {
-                document.querySelectorAll('.download-counter').forEach(el => {
-                    el.innerText = '0';
-                });
-            });
-    </script>
-
-</body>
-</html>
