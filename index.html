@@ -336,7 +336,23 @@
             
             <div class="game-grid">
                 
-                <!-- 1. Jumpy Froggy 3D -->
+                <!-- 1. Train Traffic CD-I (Nieuwste release) -->
+                <article class="game-card">
+                    <div>
+                        <h3>Train Traffic CD-I</h3>
+                        <img src="Train Traffic.png" alt="Train Traffic CD-I Screenshot" class="game-img">
+                        <p>A CD-i train traffic game with 30 levels</p>
+                    </div>
+
+                    <div class="card-action">
+                        <a href="#" id="link-traintraffic" class="btn-download" download>Download Game (RAR)</a>
+                        <p style="font-size:0.85rem; color:#aaaaaa; margin-top:0.6rem;">
+                            📥 Aantal downloads: <strong class="download-counter" data-game="traintraffic" style="color:#ffb703;">0</strong>
+                        </p>
+                    </div>
+                </article>
+
+                <!-- 2. Jumpy Froggy 3D -->
                 <article class="game-card">
                     <div>
                         <h3>Jumpy Froggy 3D</h3>
@@ -352,7 +368,7 @@
                     </div>
                 </article>
 
-                <!-- 2. Microcosm -->
+                <!-- 3. Microcosm -->
                 <article class="game-card">
                     <div>
                         <h3>Microcosm</h3>
@@ -371,7 +387,7 @@
                     </div>
                 </article>
 
-                <!-- 3. FLY CD-i -->
+                <!-- 4. FLY CD-i -->
                 <article class="game-card">
                     <div>
                         <h3>FLY CD-i</h3>
@@ -390,7 +406,7 @@
                     </div>
                 </article>
 
-                <!-- 4. Carnival CD-I -->
+                <!-- 5. Carnival CD-I -->
                 <article class="game-card">
                     <div>
                         <h3>Carnival CD-I</h3>
@@ -409,7 +425,7 @@
                     </div>
                 </article>
 
-                <!-- 5. Circus CD-I -->
+                <!-- 6. Circus CD-I -->
                 <article class="game-card">
                     <div>
                         <h3>Circus CD-I</h3>
@@ -425,7 +441,7 @@
                     </div>
                 </article>
 
-                <!-- 6. The Frantic Man -->
+                <!-- 7. The Frantic Man -->
                 <article class="game-card">
                     <div>
                         <h3>The Frantic Man</h3>
@@ -441,25 +457,25 @@
                     </div>
                 </article>
 
-                <!-- 7. Train Traffic (Coming Soon) -->
+                <!-- 8. Dead End CD-I (Coming Soon) -->
                 <article class="game-card coming-soon">
                     <div>
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
-                            <h3 style="margin:0; color:#c77dff; font-size:1.2rem;">Train Traffic</h3>
+                            <h3 style="margin:0; color:#c77dff; font-size:1.2rem;">Dead End CD-I</h3>
                             <span style="background-color:#7b2cbf; color:#e0aaff; font-family:'Orbitron',sans-serif; font-size:0.75rem; padding:0.25rem 0.6rem; border-radius:20px; border:1px solid #c77dff; text-transform:uppercase; letter-spacing:1px;">Coming Soon</span>
                         </div>
 
                         <div class="coming-soon-title-box">
-                            <h4 class="silver-title">TRAIN TRAFFIC</h4>
+                            <h4 class="silver-title">DEAD END CD-I</h4>
                         </div>
 
-                        <p>Train Traffic is a railway game for CD-I</p>
+                        <p>A Full Motion Video Racing Game for CD-I<br><br><strong>DVC Cartridge Required</strong></p>
                     </div>
 
                     <div class="card-action">
                         <div class="btn-coming-soon">Coming Soon</div>
                         <p style="font-size:0.85rem; color:#c77dff; margin-top:0.6rem;">
-                            🚂 Railway Game
+                            🏁 FMV Racing Game
                         </p>
                     </div>
                 </article>
@@ -500,11 +516,10 @@
                 if (!response.ok) return;
                 
                 const releases = await response.json();
-                const counts = { jumpy: 0, microcosm: 0, fly: 0, carnival: 0, circus: 0, frantic: 0 };
-                const links = { jumpy: '', microcosm: '', fly: '', carnival: '', circus: '', frantic: '' };
+                const counts = { traintraffic: 0, jumpy: 0, microcosm: 0, fly: 0, carnival: 0, circus: 0, frantic: 0 };
+                const links = { traintraffic: '', jumpy: '', microcosm: '', fly: '', carnival: '', circus: '', frantic: '' };
 
                 if (Array.isArray(releases)) {
-                    // Loop door alle releases heen (van nieuw naar oud)
                     releases.forEach(release => {
                         if (release.assets) {
                             release.assets.forEach(asset => {
@@ -513,7 +528,8 @@
                                 const count = asset.download_count || 0;
 
                                 let gameKey = '';
-                                if (name.includes('jumpy')) gameKey = 'jumpy';
+                                if (name.includes('train') || name.includes('traffic')) gameKey = 'traintraffic';
+                                else if (name.includes('jumpy')) gameKey = 'jumpy';
                                 else if (name.includes('microcosm')) gameKey = 'microcosm';
                                 else if (name.includes('fly')) gameKey = 'fly';
                                 else if (name.includes('carnival')) gameKey = 'carnival';
@@ -521,9 +537,7 @@
                                 else if (name.includes('frantic')) gameKey = 'frantic';
 
                                 if (gameKey) {
-                                    // Tel downloads op
                                     counts[gameKey] += count;
-                                    // Bewaar de downloadlink als die er nog niet is (pakt automatisch de juiste release)
                                     if (!links[gameKey]) {
                                         links[gameKey] = downloadUrl;
                                     }
@@ -533,7 +547,6 @@
                     });
                 }
 
-                // Vul de knoppen en tellers in op de website
                 Object.keys(counts).forEach(gameKey => {
                     const countEl = document.querySelector(`.download-counter[data-game="${gameKey}"]`);
                     if (countEl) countEl.innerText = counts[gameKey];
@@ -545,7 +558,7 @@
                 });
 
             } catch (err) {
-                // Mocht de API falen, dan gebeurt er niets kapotigs
+                // Foutafhandeling
             }
         }
 
