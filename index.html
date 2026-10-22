@@ -336,7 +336,7 @@
             
             <div class="game-grid">
                 
-                <!-- 1. Train Traffic CD-I (Nieuwste release) -->
+                <!-- 1. Train Traffic CD-I -->
                 <article class="game-card">
                     <div>
                         <h3>Train Traffic CD-I</h3>
@@ -361,7 +361,7 @@
                     </div>
 
                     <div class="card-action">
-                       <a href="Jumpy Froggy v2.rar" id="link-jumpyfroggy" class="btn-download" download>Download Game (RAR)</a>
+                         <a href="Jumpy.Froggy.v2.rar" id="link-jumpyfroggy" class="btn-download" download>Download Game (RAR)</a>
                         <p style="font-size:0.85rem; color:#aaaaaa; margin-top:0.6rem;">
                             📥 Aantal downloads: <strong class="download-counter" data-game="jumpy" style="color:#ffb703;">0</strong>
                         </p>
@@ -509,8 +509,7 @@
         <p>&copy; Condor Games - Philips CD-i Homebrew & Retro Development</p>
     </footer>
 
-    
-      <!-- Script dat automatisch de juiste Release-downloadlinks én de tellers ophaalt -->
+    <!-- Script dat automatisch de juiste Release-downloadlinks én de tellers ophaalt -->
     <script>
         async function fetchGitHubReleases() {
             try {
@@ -540,7 +539,6 @@
 
                                 if (gameKey) {
                                     counts[gameKey] += count;
-                                    // Sla de downloadlink op als deze er nog niet is (of prioriteer de nieuwste)
                                     if (!links[gameKey]) {
                                         links[gameKey] = downloadUrl;
                                     }
@@ -554,7 +552,8 @@
                     const countEl = document.querySelector(`.download-counter[data-game="${gameKey}"]`);
                     if (countEl) countEl.innerText = counts[gameKey];
 
-                    const linkEl = document.getElementById('link-' + gameKey);
+                    const linkEl = दुसdocument.getElementById('link-' + gameKey);
+                    // Als fallback: als de API-link niet laadt, gebruikt hij de standaard href uit de HTML
                     if (linkEl && links[gameKey]) {
                         linkEl.href = links[gameKey];
                     }
@@ -567,3 +566,6 @@
 
         fetchGitHubReleases();
     </script>
+
+</body>
+</html>
