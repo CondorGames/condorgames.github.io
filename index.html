@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -345,10 +346,7 @@
                     </div>
 
                     <div class="card-action">
-                        <a href="CD-I Train Traffic v2.rar" id="link-traintraffic" class="btn-download" download>Download Game (RAR)</a>
-                        <p style="font-size:0.85rem; color:#aaaaaa; margin-top:0.6rem;">
-                            📥 Aantal downloads: <strong class="download-counter" data-game="traintraffic" style="color:#ffb703;">0</strong>
-                        </p>
+                        <a href="CD-I Train Traffic v2.rar" class="btn-download" download>Download Game (RAR)</a>
                     </div>
                 </article>
 
@@ -361,10 +359,7 @@
                     </div>
 
                     <div class="card-action">
-                         <a href="Jumpy.Froggy.v2.rar" id="link-jumpyfroggy" class="btn-download" download>Download Game (RAR)</a>
-                        <p style="font-size:0.85rem; color:#aaaaaa; margin-top:0.6rem;">
-                            📥 Aantal downloads: <strong class="download-counter" data-game="jumpy" style="color:#ffb703;">0</strong>
-                        </p>
+                        <a href="Jumpy.Froggy.v2.rar" class="btn-download" download>Download Game (RAR)</a>
                     </div>
                 </article>
 
@@ -380,10 +375,7 @@
                     </div>
 
                     <div class="card-action">
-                        <a href="#" id="link-microcosm" class="btn-download" download>Download Game (RAR)</a>
-                        <p style="font-size:0.85rem; color:#aaaaaa; margin-top:0.6rem;">
-                            📥 Aantal downloads: <strong class="download-counter" data-game="microcosm" style="color:#ffb703;">0</strong>
-                        </p>
+                        <a href="Microcosm-CD-I.rar" class="btn-download" download>Download Game (RAR)</a>
                     </div>
                 </article>
 
@@ -399,10 +391,7 @@
                     </div>
                     
                     <div class="card-action">
-                        <a href="#" id="link-fly" class="btn-download" download>Download Game (RAR)</a>
-                        <p style="font-size: 0.85rem; color: #aaaaaa; margin-top: 0.6rem;">
-                            📥 Aantal downloads: <strong class="download-counter" data-game="fly" style="color:#ffb703;">0</strong>
-                        </p>
+                        <a href="FLY CD-I.rar" class="btn-download" download>Download Game (RAR)</a>
                     </div>
                 </article>
 
@@ -418,11 +407,7 @@
                     </div>
 
                     <div class="card-action">
-                        <a href="Carnival CD-I v2.rar" id="link-carnival" class="btn-download" download>Download Game (RAR)</a>
-                        
-                        <p style="font-size:0.85rem; color:#aaaaaa; margin-top:0.6rem;">
-                            📥 Aantal downloads: <strong class="download-counter" data-game="carnival" style="color:#ffb703;">0</strong>
-                        </p>
+                        <a href="Carnival CD-I v2.rar" class="btn-download" download>Download Game (RAR)</a>
                     </div>
                 </article>
 
@@ -435,10 +420,7 @@
                     </div>
 
                     <div class="card-action">
-                        <a href="#" id="link-circus" class="btn-download" download>Download Game (RAR)</a>
-                        <p style="font-size:0.85rem; color:#aaaaaa; margin-top:0.6rem;">
-                            📥 Aantal downloads: <strong class="download-counter" data-game="circus" style="color:#ffb703;">0</strong>
-                        </p>
+                        <a href="Circus CD-I.rar" class="btn-download" download>Download Game (RAR)</a>
                     </div>
                 </article>
 
@@ -451,10 +433,7 @@
                     </div>
                     
                     <div class="card-action">
-                        <a href="#" id="link-frantic" class="btn-download" download>Download Game (RAR)</a>
-                        <p style="font-size: 0.85rem; color: #aaaaaa; margin-top: 0.6rem;">
-                            📥 Aantal downloads: <strong class="download-counter" data-game="frantic" style="color:#ffb703;">0</strong>
-                        </p>
+                        <a href="The Frantic Man .rar" class="btn-download" download>Download Game (RAR)</a>
                     </div>
                 </article>
 
@@ -509,55 +488,6 @@
         <p>&copy; Condor Games - Philips CD-i Homebrew & Retro Development</p>
     </footer>
 
-
-    <!-- Script dat automatisch de juiste Release-downloadlinks én de tellers ophaalt -->
-    <script>
-        async function fetchGitHubReleases() {
-            try {
-                const response = await fetch('https://api.github.com/repos/CondorGames/condorgames.github.io/releases');
-                if (!response.ok) return;
-                
-                const releases = await response.json();
-                const counts = { traintraffic: 0, jumpy: 0, microcosm: 0, fly: 0, carnival: 0, circus: 0, frantic: 0 };
-                const links = { traintraffic: '', jumpy: '', microcosm: '', fly: '', carnival: '', circus: '', frantic: '' };
-
-                if (Array.isArray(releases)) {
-                    releases.forEach(release => {
-                        if (release.assets) {
-                            release.assets.forEach(asset => {
-                                const name = asset.name.toLowerCase();
-                                const downloadUrl = asset.browser_download_url;
-                                const count = asset.download_count || 0;
-
-                                let gameKey = '';
-                                if (name.includes('train') || name.includes('traffic')) gameKey = 'traintraffic';
-                                else if (name.includes('jumpy') || name.includes('froggy')) gameKey = 'jumpy';
-                                else if (name.includes('microcosm')) gameKey = 'microcosm';
-                                else if (name.includes('fly')) gameKey = 'fly';
-                                else if (name.includes('carnival')) gameKey = 'carnival';
-                                else if (name.includes('circus')) gameKey = 'circus';
-                                else if (name.includes('frantic')) gameKey = 'frantic';
-
-                                if (gameKey) {
-                                    counts[gameKey] += count;
-                                    if (!links[gameKey]) {
-                                        links[gameKey] = downloadUrl;
-                                    }
-                                }
-                            });
-                        }
-                    });
-                }
-
-                Object.keys(counts).forEach(gameKey => {
-                    const countEl = document.querySelector(`.download-counter[data-game="${gameKey}"]`);
-                    if (countEl) countEl.innerText = counts[gameKey];
-
-                    const linkEl = document.getElementById('link-' + gameKey);
-                    if (linkEl && links[gameKey]) {
-                        linkEl.href = links[gameKey];
-                    }
-                });
-
-            } catch (err) {
-                console.error("Fout bij ophalen releases:", err);
+</body>
+</html>
+```
