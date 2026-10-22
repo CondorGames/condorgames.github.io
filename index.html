@@ -509,6 +509,7 @@
         <p>&copy; Condor Games - Philips CD-i Homebrew & Retro Development</p>
     </footer>
 
+
     <!-- Script dat automatisch de juiste Release-downloadlinks én de tellers ophaalt -->
     <script>
         async function fetchGitHubReleases() {
@@ -552,8 +553,7 @@
                     const countEl = document.querySelector(`.download-counter[data-game="${gameKey}"]`);
                     if (countEl) countEl.innerText = counts[gameKey];
 
-                    const linkEl = दुसdocument.getElementById('link-' + gameKey);
-                    // Als fallback: als de API-link niet laadt, gebruikt hij de standaard href uit de HTML
+                    const linkEl = document.getElementById('link-' + gameKey);
                     if (linkEl && links[gameKey]) {
                         linkEl.href = links[gameKey];
                     }
@@ -561,11 +561,3 @@
 
             } catch (err) {
                 console.error("Fout bij ophalen releases:", err);
-            }
-        }
-
-        fetchGitHubReleases();
-    </script>
-
-</body>
-</html>
