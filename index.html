@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -111,21 +110,44 @@
             margin-bottom: 0;
         }
 
+        /* Aangepaste Info Box met video */
         .info-box {
             background-color: rgba(255, 183, 3, 0.05);
             border: 1px dashed var(--accent-gold);
             border-radius: 10px;
             padding: 1.2rem 1.5rem;
             margin-bottom: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            flex-wrap: wrap;
         }
 
-        .info-box h3 {
+        .info-box-text {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .info-box video {
+            max-width: 320px;
+            width: 100%;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        }
+
+        .silver-title {
             font-family: 'Orbitron', sans-serif;
-            color: var(--accent-gold);
-            margin: 0 0 0.5rem 0;
-            font-size: 1.1rem;
+            font-size: 1.5rem;
+            font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            margin: 0 0 0.5rem 0;
+            background: linear-gradient(180deg, #ffffff 0%, #cfd5e6 50%, #8a94b2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 3px 10px rgba(255, 255, 255, 0.15);
         }
 
         .info-box p {
@@ -224,35 +246,6 @@
             line-height: 1.4;
         }
 
-        .coming-soon-title-box {
-            background: linear-gradient(135deg, #1a1b24 0%, #0d0e14 100%);
-            border: 2px solid #a0a8c0;
-            border-radius: 10px;
-            padding: 2.2rem 1rem;
-            text-align: center;
-            margin: 0 auto 1.5rem auto;
-            box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.05), 0 5px 15px rgba(0,0,0,0.4);
-        }
-
-        .silver-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin: 0;
-            background: linear-gradient(180deg, #ffffff 0%, #cfd5e6 50%, #8a94b2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 3px 10px rgba(255, 255, 255, 0.15);
-        }
-
-        .game-card p {
-            font-size: 1.05rem;
-            color: #a0aec0;
-            margin-bottom: 1rem;
-        }
-
         .btn-download {
             display: inline-block;
             background: linear-gradient(135deg, var(--btn-bg), #9e6200);
@@ -268,6 +261,8 @@
             letter-spacing: 1px;
             transition: all 0.2s ease;
             box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .btn-download:hover {
@@ -276,22 +271,18 @@
             box-shadow: 0 0 15px var(--accent-glow);
         }
 
-        .btn-coming-soon {
+        .badge-coming-soon {
             display: inline-block;
-            background: linear-gradient(135deg, #7b2cbf, #5a189a);
-            color: #ffffff;
-            text-decoration: none;
-            padding: 0.85rem 1.4rem;
-            border-radius: 8px;
+            background-color: #7b2cbf;
+            color: #e0aaff;
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 700;
-            text-align: center;
+            font-size: 0.8rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            border: 1px solid #c77dff;
             text-transform: uppercase;
             letter-spacing: 1px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-            cursor: default;
-            border: 1px solid #c77dff;
+            margin-bottom: 1rem;
         }
 
         .card-action {
@@ -327,9 +318,16 @@
             <p>Hi, I am <strong>Condor</strong>! Welcome to my homebrew hub. Here you can find original, homemade games and software developed specifically for the <strong>Philips CD-i</strong> console. All games are completely free to download for retro gaming enthusiasts!</p>
         </section>
 
+        <!-- Info Box met Zilveren Tekst en Video -->
         <div class="info-box">
-            <h3>Testing & Burning Instructions</h3>
-            <p>All games have been burned to CD and tested in actual CD-i players. Extract the ZIP or RAR file and burn the .cue and .bin files using your favorite burning software.</p>
+            <div class="info-box-text">
+                <h3 class="silver-title">How to use ---></h3>
+                <p>All games have been burned to CD and tested in actual CD-i players. Extract the ZIP or RAR file and burn the .cue and .bin files using your favorite burning software.</p>
+            </div>
+            <video controls preload="metadata">
+                <source src="Insrtution.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
         </div>
 
         <section>
@@ -337,7 +335,23 @@
             
             <div class="game-grid">
                 
-                <!-- 1. Train Traffic CD-I -->
+                <!-- 1. Dead End CD-I (NIEUW: Linksboven met Downloadknop) -->
+                <article class="game-card">
+                    <div>
+                        <h3>Dead End CD-I</h3>
+                        <div class="update-badge">
+                            <strong>⚠️ Note:</strong><br>DVC Cartridge Required.
+                        </div>
+                        <img src="Dead End.png" alt="Dead End CD-I Screenshot" class="game-img">
+                        <p>A Full Motion Video Racing Game for Philips CD-i.</p>
+                    </div>
+
+                    <div class="card-action">
+                        <a href="https://github.com/CondorGames/condorgames.github.io/releases/download/v1.0.6/Dead.End.CD-I.rar" class="btn-download" download>Download Game (RAR)</a>
+                    </div>
+                </article>
+
+                <!-- 2. Train Traffic CD-I -->
                 <article class="game-card">
                     <div>
                         <h3>Train Traffic CD-I</h3>
@@ -350,7 +364,7 @@
                     </div>
                 </article>
 
-                <!-- 2. Jumpy Froggy 3D -->
+                <!-- 3. Jumpy Froggy 3D -->
                 <article class="game-card">
                     <div>
                         <h3>Jumpy Froggy 3D</h3>
@@ -363,7 +377,7 @@
                     </div>
                 </article>
 
-                <!-- 3. Microcosm -->
+                <!-- 4. Microcosm -->
                 <article class="game-card">
                     <div>
                         <h3>Microcosm</h3>
@@ -379,7 +393,7 @@
                     </div>
                 </article>
 
-                <!-- 4. FLY CD-i -->
+                <!-- 5. FLY CD-i -->
                 <article class="game-card">
                     <div>
                         <h3>FLY CD-i</h3>
@@ -395,7 +409,7 @@
                     </div>
                 </article>
 
-                <!-- 5. Carnival CD-I -->
+                <!-- 6. Carnival CD-I -->
                 <article class="game-card">
                     <div>
                         <h3>Carnival CD-I</h3>
@@ -411,7 +425,7 @@
                     </div>
                 </article>
 
-                <!-- 6. Circus CD-I -->
+                <!-- 7. Circus CD-I -->
                 <article class="game-card">
                     <div>
                         <h3>Circus CD-I</h3>
@@ -424,7 +438,7 @@
                     </div>
                 </article>
 
-                <!-- 7. The Frantic Man -->
+                <!-- 8. The Frantic Man -->
                 <article class="game-card">
                     <div>
                         <h3>The Frantic Man</h3>
@@ -437,26 +451,11 @@
                     </div>
                 </article>
 
-                <!-- 8. Dead End CD-I (Coming Soon) -->
+                <!-- 9. Coming Soon Vak (Met Denk.png) -->
                 <article class="game-card coming-soon">
-                    <div>
-                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
-                            <h3 style="margin:0; color:#c77dff; font-size:1.2rem;">Dead End CD-I</h3>
-                            <span style="background-color:#7b2cbf; color:#e0aaff; font-family:'Orbitron',sans-serif; font-size:0.75rem; padding:0.25rem 0.6rem; border-radius:20px; border:1px solid #c77dff; text-transform:uppercase; letter-spacing:1px;">Coming Soon</span>
-                        </div>
-
-                        <div class="coming-soon-title-box">
-                            <h4 class="silver-title">DEAD END CD-I</h4>
-                        </div>
-
-                        <p>A Full Motion Video Racing Game for CD-I<br><br><strong>DVC Cartridge Required</strong></p>
-                    </div>
-
-                    <div class="card-action">
-                        <div class="btn-coming-soon">Coming Soon</div>
-                        <p style="font-size:0.85rem; color:#c77dff; margin-top:0.6rem;">
-                            🏁 FMV Racing Game
-                        </p>
+                    <div style="text-align: center;">
+                        <span class="badge-coming-soon">Coming Soon</span>
+                        <img src="Denk.png" alt="Coming Soon Screenshot" class="game-img">
                     </div>
                 </article>
 
@@ -490,4 +489,3 @@
 
 </body>
 </html>
-```
