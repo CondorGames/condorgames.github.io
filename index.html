@@ -180,6 +180,7 @@
         }
 
         .game-card {
+            position: relative;
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 12px;
@@ -208,12 +209,37 @@
             box-shadow: 0 8px 25px var(--coming-soon-glow);
         }
 
+        .new-sticker {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background-color: #dc2626;
+            color: #ffffff;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 800;
+            padding: 0.3rem 0.65rem;
+            border-radius: 6px;
+            letter-spacing: 0.5px;
+            box-shadow: 0 3px 10px rgba(220, 38, 38, 0.5);
+            z-index: 2;
+        }
+
         .game-card h3 {
             font-family: 'Orbitron', sans-serif;
             color: #ffffff;
             margin-top: 0;
             margin-bottom: 1rem;
             font-size: 1.4rem;
+            padding-right: 95px;
+        }
+
+        .above-img-label {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            margin-bottom: 0.4rem;
+            letter-spacing: 0.5px;
         }
 
         .game-img {
@@ -328,36 +354,52 @@
             
             <div class="game-grid">
                 
-                <!-- 1. CD-I Repair (Nieuwste release) -->
+                <!-- 1. Nosic (Nieuwste release) -->
+                <article class="game-card">
+                    <span class="new-sticker">NEW! 20-11-2026</span>
+                    <div>
+                        <h3>Nosic</h3>
+                        <img src="NOSIC.png" alt="Nosic Screenshot" class="game-img">
+                        <p>Nosic is an action speed platform game based on Sonic the Hedgehog.<br><br><strong>DVC Cartridge Required</strong></p>
+                    </div>
+
+                    <div class="card-action">
+                        <a href="https://github.com/CondorGames/condorgames.github.io/releases/download/v1.2.0/Nosic.CD-I.rar" class="btn-download" download>Download Game (RAR)</a>
+                    </div>
+                </article>
+
+                <!-- 2. CD-I Repair -->
                 <article class="game-card">
                     <div>
                         <h3>CD-I Repair</h3>
+                        <div class="above-img-label">Graphical update 20-11-2026</div>
                         <img src="CD-I Repair.png" alt="CD-I Repair Screenshot" class="game-img">
                         <p>One soldering iron, six Philips CD-i circuit boards, one mission: tin every copper pad. Avoid the blue capacitor and bring the player back to life.<br><br><strong>DVC Cartridge Required</strong></p>
                     </div>
 
                     <div class="card-action">
-                        <a href="https://github.com/CondorGames/condorgames.github.io/releases/download/v1.1.9/CD-I.Repair.rar" class="btn-download" download>Download Game (RAR)</a>
+                        <a href="https://github.com/CondorGames/condorgames.github.io/releases/download/v1.1.8/CD-I.Repair.V2.0.rar" class="btn-download" download>Download Game (RAR)</a>
                     </div>
                 </article>
 
-                <!-- 2. Ramio CD-I -->
+                <!-- 3. Ramio CD-I -->
                 <article class="game-card">
                     <div>
                         <h3>Ramio CD-I</h3>
                         <div class="update-badge">
                             <span>🚀</span> <strong>Updated on 12-11-2026:</strong><br>music and speed correction.
                         </div>
+                        <div class="above-img-label">FPS Update 20-11-2026</div>
                         <img src="Ramio.png" alt="Ramio CD-I Screenshot" class="game-img">
                         <p>Ramio CD-I is a game based on Mario Bros. A classic platform adventure across ten levels, from green hills to a dark dungeon. Collect the CDs, defeat the knights and free Ramio’s friend.<br><br><strong>DVC Cartridge Required</strong></p>
                     </div>
 
                     <div class="card-action">
-                        <a href="https://github.com/CondorGames/condorgames.github.io/releases/download/v1.1.8/Ramio.v1.0.CD-I.rar" class="btn-download" download>Download Game (RAR)</a>
+                        <a href="https://github.com/CondorGames/condorgames.github.io/releases/download/v1.1.7/Ramio.V2.0.CD-I.rar" class="btn-download" download>Download Game (RAR)</a>
                     </div>
                 </article>
 
-                <!-- 3. Bloodline CD-I -->
+                <!-- 4. Bloodline CD-I -->
                 <article class="game-card">
                     <div>
                         <h3>Bloodline CD-I</h3>
@@ -373,7 +415,7 @@
                     </div>
                 </article>
 
-                <!-- 4. Falcon CD-I -->
+                <!-- 5. Falcon CD-I -->
                 <article class="game-card">
                     <div>
                         <h3>Falcon CD-I</h3>
@@ -389,7 +431,7 @@
                     </div>
                 </article>
 
-                <!-- 5. Dead End CD-I -->
+                <!-- 6. Dead End CD-I -->
                 <article class="game-card">
                     <div>
                         <h3>Dead End CD-I</h3>
@@ -406,7 +448,7 @@
                     </div>
                 </article>
 
-                <!-- 6. Train Traffic CD-I -->
+                <!-- 7. Train Traffic CD-I -->
                 <article class="game-card">
                     <div>
                         <h3>Train Traffic CD-I</h3>
@@ -419,7 +461,7 @@
                     </div>
                 </article>
 
-                <!-- 7. Jumpy Froggy 3D -->
+                <!-- 8. Jumpy Froggy 3D -->
                 <article class="game-card">
                     <div>
                         <h3>Jumpy Froggy 3D</h3>
@@ -432,7 +474,7 @@
                     </div>
                 </article>
 
-                <!-- 8. Microcosm -->
+                <!-- 9. Microcosm -->
                 <article class="game-card">
                     <div>
                         <h3>Microcosm</h3>
@@ -449,7 +491,7 @@
                     </div>
                 </article>
 
-                <!-- 9. FLY CD-i -->
+                <!-- 10. FLY CD-i -->
                 <article class="game-card">
                     <div>
                         <h3>FLY CD-i</h3>
@@ -465,7 +507,7 @@
                     </div>
                 </article>
 
-                <!-- 10. Carnival CD-I -->
+                <!-- 11. Carnival CD-I -->
                 <article class="game-card">
                     <div>
                         <h3>Carnival CD-I</h3>
@@ -481,7 +523,7 @@
                     </div>
                 </article>
 
-                <!-- 11. Circus CD-I -->
+                <!-- 12. Circus CD-I -->
                 <article class="game-card">
                     <div>
                         <h3>Circus CD-I</h3>
@@ -494,7 +536,7 @@
                     </div>
                 </article>
 
-                <!-- 12. The Frantic Man -->
+                <!-- 13. The Frantic Man -->
                 <article class="game-card">
                     <div>
                         <h3>The Frantic Man</h3>
@@ -507,7 +549,7 @@
                     </div>
                 </article>
 
-                <!-- 13. Coming Soon Vak (Met Denk.png) -->
+                <!-- 14. Coming Soon Vak (Met Denk.png) -->
                 <article class="game-card coming-soon">
                     <div style="text-align: center;">
                         <span class="badge-coming-soon">Coming Soon</span>
